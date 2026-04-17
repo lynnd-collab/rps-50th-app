@@ -219,6 +219,23 @@ export default function Gallery() {
       console.log('[Gallery] VITE_SUPABASE_URL:', import.meta.env.VITE_SUPABASE_URL)
       console.log('[Gallery] ANON_KEY prefix (first 20 chars):', import.meta.env.VITE_SUPABASE_ANON_KEY?.slice(0, 20))
       console.log('[Gallery] BUCKET constant:', BUCKET)
+
+      // Auth state diagnostics
+      const raw = localStorage.getItem(AUTH_KEY)
+      console.log('[Gallery] localStorage raw value for', AUTH_KEY, ':', raw)
+      try {
+        if (raw) {
+          const parsed = JSON.parse(raw)
+          const age = Date.now() - parsed.timestamp
+          console.log('[Gallery] auth parsed:', parsed)
+          console.log('[Gallery] age (ms):', age, '| TTL (ms):', AUTH_TTL, '| still valid:', age < AUTH_TTL)
+        }
+      } catch (e) {
+        console.warn('[Gallery] failed to parse auth value:', e)
+      }
+      console.log('[Gallery] isVerified() result:', isVerified())
+      console.log('[Gallery] verified state (React):', verified)
+
       const { data: buckets, error } = await supabase.storage.listBuckets()
       if (error) console.error('[Gallery] listBuckets error:', error)
       else console.log('[Gallery] available buckets:', buckets.map(b => `"${b.name}" (id: ${b.id})`))
