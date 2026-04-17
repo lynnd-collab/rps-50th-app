@@ -144,7 +144,7 @@ export const awards = {
     description: 'Named in 2006 after Liliane Striker in recognition of her contributions to renal research. Awarded to fellows and junior faculty for excellence in renal pathology research.',
     recipients: [
       { year: 2023, name: 'Bangchen Wang' },
-      { year: 2022, name: 'Ira Doressa & Anne L. How' },
+      { year: 2022, name: 'Ira Doressa Anne L. How' },
       { year: 2022, name: 'Odia Molen' },
       { year: 2022, name: 'Fan Fan' },
       { year: 2020, name: 'Tiffany Caza' },
