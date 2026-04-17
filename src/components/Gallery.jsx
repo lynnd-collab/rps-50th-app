@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { supabase } from '../lib/supabase'
 
 const GALLERY_PASSWORD = 'rps50'
-const BUCKET = 'RPS-GALLERY'
+const BUCKET = 'rps-gallery'
 const TABLE = 'rps_photos'
 
 function CameraIcon() {
@@ -37,7 +37,21 @@ export default function Gallery() {
   const [uploadError, setUploadError] = useState(null)
   const fileInputRef = useRef(null)
 
-  useEffect(() => { fetchPhotos() }, [])
+  useEffect(() => {
+    async function diagnose() {
+      console.log('[Gallery] VITE_SUPABASE_URL:', import.meta.env.VITE_SUPABASE_URL)
+      console.log('[Gallery] ANON_KEY prefix (first 20 chars):', import.meta.env.VITE_SUPABASE_ANON_KEY?.slice(0, 20))
+      console.log('[Gallery] BUCKET constant:', BUCKET)
+      const { data: buckets, error } = await supabase.storage.listBuckets()
+      if (error) {
+        console.error('[Gallery] listBuckets error:', error)
+      } else {
+        console.log('[Gallery] available buckets:', buckets.map(b => `"${b.name}" (id: ${b.id})`))
+      }
+    }
+    diagnose()
+    fetchPhotos()
+  }, [])
 
   // Clean up object URL when preview changes or component unmounts
   useEffect(() => {
@@ -84,18 +98,23 @@ export default function Gallery() {
       const ext = file.name.split('.').pop().toLowerCase()
       const filename = `${Date.now()}.${ext}`
 
-      const { error: storageErr } = await supabase.storage
+      console.log('[Gallery] uploading to bucket:', BUCKET, 'filename:', filename)
+
+      const { data: storageData, error: storageErr } = await supabase.storage
         .from(BUCKET)
         .upload(filename, file, { contentType: file.type, upsert: false })
+      console.log('[Gallery] storage result:', { storageData, storageErr })
       if (storageErr) throw storageErr
 
       const { data: { publicUrl } } = supabase.storage
         .from(BUCKET)
         .getPublicUrl(filename)
+      console.log('[Gallery] public URL:', publicUrl)
 
-      const { error: dbErr } = await supabase
+      const { data: dbData, error: dbErr } = await supabase
         .from(TABLE)
         .insert({ photo_url: publicUrl, caption: caption.trim() || null })
+      console.log('[Gallery] db insert result:', { dbData, dbErr })
       if (dbErr) throw dbErr
 
       // Reset and refresh
@@ -106,6 +125,7 @@ export default function Gallery() {
       setMode('idle')
       await fetchPhotos()
     } catch (err) {
+      console.error('[Gallery] upload error (full object):', err)
       setUploadError(err.message || 'Upload failed. Please try again.')
     } finally {
       setUploading(false)
