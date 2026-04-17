@@ -4,6 +4,23 @@ import { supabase } from '../lib/supabase'
 const GALLERY_PASSWORD = 'rps50'
 const BUCKET = 'rps-gallery'
 const TABLE = 'rps_photos'
+const AUTH_KEY = 'rps_gallery_auth'
+const AUTH_TTL = 86_400_000 // 24 hours in ms
+
+function isVerified() {
+  try {
+    const stored = localStorage.getItem(AUTH_KEY)
+    if (!stored) return false
+    const { verified, timestamp } = JSON.parse(stored)
+    return verified && Date.now() - timestamp < AUTH_TTL
+  } catch {
+    return false
+  }
+}
+
+function saveVerified() {
+  localStorage.setItem(AUTH_KEY, JSON.stringify({ verified: true, timestamp: Date.now() }))
+}
 
 function CameraIcon() {
   return (
@@ -27,6 +44,8 @@ export default function Gallery() {
   const [photos, setPhotos] = useState([])
   const [loading, setLoading] = useState(true)
   // mode: 'idle' | 'password' | 'upload'
+  // If the device verified within the last 24h, go straight to upload on "Add Photo"
+  const [verified, setVerified] = useState(() => isVerified())
   const [mode, setMode] = useState('idle')
   const [password, setPassword] = useState('')
   const [passwordError, setPasswordError] = useState(false)
@@ -35,6 +54,8 @@ export default function Gallery() {
   const [caption, setCaption] = useState('')
   const [uploading, setUploading] = useState(false)
   const [uploadError, setUploadError] = useState(null)
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null) // photo id awaiting confirmation
+  const [deleting, setDeleting] = useState(false)
   const fileInputRef = useRef(null)
 
   useEffect(() => {
@@ -71,6 +92,8 @@ export default function Gallery() {
   function handlePasswordSubmit(e) {
     e.preventDefault()
     if (password === GALLERY_PASSWORD) {
+      saveVerified()
+      setVerified(true)
       setMode('upload')
       setPasswordError(false)
       setPassword('')
@@ -132,6 +155,27 @@ export default function Gallery() {
     }
   }
 
+  async function handleDelete(photo) {
+    setDeleting(true)
+    try {
+      // Extract the storage filename from the public URL
+      // URL format: .../storage/v1/object/public/rps-gallery/<filename>
+      const filename = photo.photo_url.split('/').pop()
+      const { error: storageErr } = await supabase.storage.from(BUCKET).remove([filename])
+      if (storageErr) console.error('[Gallery] storage delete error:', storageErr)
+
+      const { error: dbErr } = await supabase.from(TABLE).delete().eq('id', photo.id)
+      if (dbErr) throw dbErr
+
+      setConfirmDeleteId(null)
+      await fetchPhotos()
+    } catch (err) {
+      console.error('[Gallery] delete error:', err)
+    } finally {
+      setDeleting(false)
+    }
+  }
+
   function cancel() {
     setMode('idle')
     setPassword('')
@@ -150,7 +194,7 @@ export default function Gallery() {
         <h2 className="text-[#0C447C] text-lg font-bold">Gallery</h2>
         {mode === 'idle' && (
           <button
-            onClick={() => setMode('password')}
+            onClick={() => setMode(verified ? 'upload' : 'password')}
             className="flex items-center gap-1.5 text-sm font-semibold text-white bg-[#0C447C] px-3 py-1.5 rounded-lg hover:bg-[#1a5a9e] active:bg-[#083460] transition-colors"
           >
             <CameraIcon2 />
@@ -266,7 +310,7 @@ export default function Gallery() {
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {photos.map((photo) => (
-            <div key={photo.id} className="rounded-xl overflow-hidden bg-white border border-gray-100 shadow-sm">
+            <div key={photo.id} className="relative rounded-xl overflow-hidden bg-white border border-gray-100 shadow-sm">
               <img
                 src={photo.photo_url}
                 alt={photo.caption ?? 'Gallery photo'}
@@ -276,6 +320,42 @@ export default function Gallery() {
               {photo.caption && (
                 <p className="text-xs text-gray-600 px-2 py-1.5 leading-snug">{photo.caption}</p>
               )}
+
+              {/* Delete button — only shown to verified users */}
+              {verified && confirmDeleteId !== photo.id && (
+                <button
+                  onClick={() => setConfirmDeleteId(photo.id)}
+                  aria-label="Delete photo"
+                  className="absolute top-1.5 right-1.5 w-7 h-7 flex items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+                >
+                  <TrashIcon />
+                </button>
+              )}
+
+              {/* Confirmation overlay */}
+              {confirmDeleteId === photo.id && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/60 rounded-xl p-2">
+                  <p className="text-white text-xs font-semibold text-center leading-tight">
+                    Delete this photo?
+                  </p>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => handleDelete(photo)}
+                      disabled={deleting}
+                      className="px-3 py-1 text-xs font-bold bg-red-500 text-white rounded-lg hover:bg-red-600 disabled:opacity-50 transition-colors"
+                    >
+                      {deleting ? '…' : 'Yes'}
+                    </button>
+                    <button
+                      onClick={() => setConfirmDeleteId(null)}
+                      disabled={deleting}
+                      className="px-3 py-1 text-xs font-bold bg-white text-gray-700 rounded-lg hover:bg-gray-100 disabled:opacity-50 transition-colors"
+                    >
+                      No
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -284,13 +364,21 @@ export default function Gallery() {
   )
 }
 
-// Small camera icon for the button
 function CameraIcon2() {
   return (
     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
         d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  )
+}
+
+function TrashIcon() {
+  return (
+    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
     </svg>
   )
 }
