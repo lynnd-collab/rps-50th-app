@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .tab-btn {
+    @apply flex-1 py-3 text-sm font-semibold transition-colors duration-150 focus:outline-none;
+  }
+  .tab-btn-active {
+    @apply border-b-2 border-white text-white;
+  }
+  .tab-btn-inactive {
+    @apply text-blue-200 hover:text-white;
+  }
+  .sub-tab-btn {
+    @apply px-3 py-1.5 text-xs font-semibold rounded-full transition-colors duration-150 focus:outline-none whitespace-nowrap;
+  }
+  .sub-tab-active {
+    @apply bg-[#0C447C] text-white;
+  }
+  .sub-tab-inactive {
+    @apply bg-white text-[#0C447C] border border-[#0C447C] hover:bg-blue-50;
+  }
+}
+
+/* Timeline dot entrance animation via IntersectionObserver */
+.timeline-dot {
+  transform: scale(0);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.timeline-dot.dot-visible {
+  transform: scale(1);
+}
