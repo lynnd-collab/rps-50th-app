@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { events } from '../data'
+import Gallery from '../components/Gallery'
 
 // March 14 2027 19:00:00 PDT = March 15 2027 02:00:00 UTC
 const PARTY_DATE = new Date('2027-03-15T02:00:00.000Z')
@@ -92,14 +93,6 @@ const PinIcon = () => (
   </svg>
 )
 
-const CameraIcon = () => (
-  <svg className="w-7 h-7 text-[#0C447C]/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-      d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-  </svg>
-)
-
 export default function Celebrate() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-6">
@@ -139,22 +132,7 @@ export default function Celebrate() {
         ))}
       </div>
 
-      <section>
-        <h2 className="text-[#0C447C] text-lg font-bold mb-3">Gallery</h2>
-        <div className="grid grid-cols-2 gap-3">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div
-              key={i}
-              className="aspect-square rounded-xl flex flex-col items-center justify-center border-2 border-dashed border-[#0C447C]/20 bg-[#0C447C]/5"
-            >
-              <CameraIcon />
-              <p className="text-xs font-medium text-[#0C447C]/50 mt-2 text-center px-2 leading-tight">
-                Photo coming soon
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <Gallery />
     </div>
   )
 }
