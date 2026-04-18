@@ -124,6 +124,16 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
+      'My research spans developmental kidney disease, diabetic nephropathy, podocyte biology, and transplant pathology.',
+      'I received my medical degree from the University of Athens in Greece.',
+      'I edited the Pathology of Solid Organ Transplantation textbook.',
+      'I received the Jacob Churg Award in 2011.',
+      'I now serve as the historian of the Renal Pathology Society.',
+    ],
+    answer: 'Helen Liapis',
+  },
+  {
+    clues: [
       'In 2002 I founded Canada\'s first annual Leonard Cohen Night in Edmonton, and Leonard Cohen himself once called me "a great master of the surreal."',
       'My office at the University of Alberta featured a Sony Aibo robotic dog and a robotic cat named Orange.',
       'On Easter Sunday 1991, I stopped by the Banff Centre on a whim and booked the venue for what would become one of the most influential meetings in transplant pathology.',
