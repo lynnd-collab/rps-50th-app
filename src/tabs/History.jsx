@@ -113,6 +113,18 @@ export default function History() {
           ))}
         </div>
       </section>
+
+      <section className="border-t border-gray-200 pt-4">
+        <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Further Reading</h2>
+        <ul className="space-y-2">
+          <li className="text-[11px] text-gray-400 leading-relaxed">
+            Weening JJ, Jennette JC. Historical milestones in renal pathology. <span className="italic">Virchows Arch.</span> 2012 Jul;461(1):3–11.
+          </li>
+          <li className="text-[11px] text-gray-400 leading-relaxed">
+            D'Agati VD, Mengel M. The rise of renal pathology in nephrology: structure illuminates function. <span className="italic">Am J Kidney Dis.</span> 2013 Jun;61(6):1016–25.
+          </li>
+        </ul>
+      </section>
     </div>
   )
 }
