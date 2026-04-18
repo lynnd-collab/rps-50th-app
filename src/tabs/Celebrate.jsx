@@ -48,7 +48,7 @@ function Countdown() {
           Countdown to
         </p>
         <p className="text-sm font-bold text-white leading-tight">
-          RPS 50th Birthday Party
+          🎂 RPS 50th Birthday Party 🎂
         </p>
         <p className="text-xs text-white/60 mt-0.5">March 14, 2027 · 7:00 PM PDT · Vancouver</p>
       </div>
