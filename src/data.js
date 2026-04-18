@@ -1,5 +1,9 @@
 export const timeline = [
+  { year: 1666, milestone: false, text: 'Marcello Malpighi first describes the microanatomy of the renal glomerulus using the newly developed microscope, founding the science of renal histology.' },
+  { year: 1827, milestone: false, text: 'Richard Bright describes clinical renal syndromes and correlates them with kidney pathology, laying the foundation for what would become nephrology.' },
+  { year: 1914, milestone: false, text: 'Franz Volhard and Theodor Fahr publish the first systematic histopathology classification of renal disease, establishing pathology as central to understanding kidney disorders.' },
   { year: 1951, milestone: true, text: 'Iversen and Brun perform the first published percutaneous kidney biopsies, launching the modern era of renal pathology.' },
+  { year: 1957, milestone: false, text: 'First electron microscopy observations of ultrastructural changes in glomerular disease published, revealing the fine structure of podocytes, the glomerular basement membrane, and the mesangium for the first time.' },
   { year: 1961, milestone: false, text: 'The CIBA Symposium in London brings together clinicians and pathologists to assess the future of kidney biopsy, establishing it as standard of care at major renal centres worldwide.' },
   { year: 1966, milestone: false, text: 'Robert Heptinstall publishes the first edition of Pathology of the Kidney, the field\'s foundational textbook.' },
   { year: 1977, milestone: true, text: 'Conrad Pirani convenes founding members at the ASN meeting in Washington, D.C. The Renal Pathology Club is born.' },
