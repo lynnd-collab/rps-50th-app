@@ -45,6 +45,7 @@ const PATHOLOGISTS = [
       'I observed that "the kidney has a limited number of ways to respond to an innumerable number of injuries."',
       'I was a founding co-editor of a major diagnostic renal pathology textbook bearing my name.',
       'I served as Executive Vice President and Secretary-Treasurer of the USCAP for 12 years.',
+      'As Secretary-Treasurer of the USCAP, I was known for hosting gatherings for RPS members in the executive suite at the annual meeting.',
     ],
     answer: 'Fred Silva',
   },
