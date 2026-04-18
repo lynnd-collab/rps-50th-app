@@ -68,10 +68,11 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
-      'I trained at MGH and Harvard and spent my career at Massachusetts General Hospital.',
+      'After undergraduate studies at MIT, I trained at Harvard Medical School and Massachusetts General Hospital, where I spent my career.',
       'I was a key figure in developing criteria for transplant rejection diagnosis.',
-      'At a Banff meeting I famously said "let\'s not codify our ignorance."',
+      'At a Banff meeting I famously said, "Let\'s not codify our ignorance."',
       'I received the Jacob Churg Award in 1998.',
+      'My enthusiastic exclamation became legendary among trainees — "GRREAATT!"',
     ],
     answer: 'Robert Colvin',
   },
