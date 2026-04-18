@@ -275,6 +275,7 @@ function PhotoCard({ photo, index, verified, confirmDeleteId, setConfirmDeleteId
   const [isEditing, setIsEditing] = useState(false)
   const [editText, setEditText] = useState(photo.caption ?? '')
   const [saving, setSaving] = useState(false)
+  const [imgLoaded, setImgLoaded] = useState(false)
 
   async function saveCaption() {
     setSaving(true)
@@ -291,13 +292,17 @@ function PhotoCard({ photo, index, verified, confirmDeleteId, setConfirmDeleteId
 
   return (
     <div className="relative rounded-xl overflow-hidden bg-white border border-gray-100 shadow-sm">
-      <img
-        src={photo.photo_url}
-        alt={photo.caption ?? 'Gallery photo'}
-        className="w-full aspect-square object-cover cursor-pointer"
-        loading="lazy"
-        onClick={() => confirmDeleteId !== photo.id && !isEditing && setLightboxIndex(index)}
-      />
+      <div className="w-full aspect-square bg-gray-100">
+        <img
+          src={photo.photo_url}
+          alt={photo.caption ?? 'Gallery photo'}
+          className="w-full h-full object-cover cursor-pointer"
+          loading="lazy"
+          onLoad={() => setImgLoaded(true)}
+          onClick={() => confirmDeleteId !== photo.id && !isEditing && setLightboxIndex(index)}
+          style={{ opacity: imgLoaded ? 1 : 0, transition: 'opacity 0.3s ease' }}
+        />
+      </div>
 
       {/* Caption display / edit */}
       {isEditing ? (
