@@ -14,7 +14,7 @@ const PATHOLOGISTS = [
     clues: [
       'I introduced thin sections (2–3 microns) to renal pathology.',
       'I worked at Mount Sinai School of Medicine in New York.',
-      'The most prestigious mid-career RPS award bears my name.',
+      'A prestigious RPS award, recognising major contributions to nephropathology, bears my name.',
       'I received the ASN John Peters Award in 1987.',
     ],
     answer: 'Jacob Churg',
