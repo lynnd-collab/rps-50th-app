@@ -124,6 +124,16 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
+      'I am a renal transplant pathologist who has made major contributions to molecular diagnostics in allograft pathology.',
+      'I served as RPS President in 2020 and received the Jacob Churg Award in 2019.',
+      'I have been a key figure in the Banff classification process and am deeply knowledgeable about its history and evolution.',
+      'I am based at the University of Alberta in Edmonton, Canada.',
+      'Colleagues know me for my sharp wit as well as my scientific knowledge.',
+    ],
+    answer: 'Michael Mengel',
+  },
+  {
+    clues: [
       'I helped move pauci-immune necrotizing and crescentic GN from pattern recognition toward pathogenesis.',
       'UNC Chapel Hill is my academic home.',
       'In 1997, the Renal Pathology Society gave me the first Jacob Churg Award.',
