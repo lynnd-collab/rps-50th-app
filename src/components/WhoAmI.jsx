@@ -144,7 +144,12 @@ function shuffle(arr) {
 function loadSession() {
   try {
     const raw = sessionStorage.getItem(SESSION_KEY)
-    if (raw) return JSON.parse(raw)
+    if (raw) {
+      const saved = JSON.parse(raw)
+      // Discard stale sessions from older versions of the quiz with fewer pathologists
+      if (saved.deck?.length === PATHOLOGISTS.length) return saved
+      sessionStorage.removeItem(SESSION_KEY)
+    }
   } catch {}
   return null
 }
