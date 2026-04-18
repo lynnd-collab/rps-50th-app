@@ -8,7 +8,7 @@ export const timeline = [
   { year: 1961, milestone: false, text: 'The CIBA Symposium in London brings together clinicians and pathologists to assess the future of kidney biopsy, establishing it as standard of care at major renal centres worldwide.' },
   { year: 1966, milestone: false, text: 'Robert Heptinstall publishes the first edition of Pathology of the Kidney, the field\'s foundational textbook.' },
   { year: 1977, milestone: true, text: 'Conrad Pirani convenes founding members at the ASN meeting in Washington, D.C. The Renal Pathology Club is born.' },
-  { year: 1978, milestone: true, text: 'First scientific symposium held in New Orleans — topic: focal segmental glomerulosclerosis. Constitution and bylaws established.' },
+  { year: 1978, milestone: true, text: 'First Renal Pathology Club scientific symposium held in New Orleans — Topic: Focal segmental glomerulosclerosis. Constitution and bylaws established.' },
   { year: 1981, milestone: false, text: 'The Renal Pathology Club accepts ASN co-sponsorship of a jointly sponsored scientific session. Robert Heptinstall becomes second President.' },
   { year: 1991, milestone: false, text: 'The Renal Pathology Club becomes the 13th official USCAP Companion Society.' },
   { year: 1991, milestone: false, text: 'The first Banff Conference on Allograft Pathology is held in Banff, Alberta, led by Kim Solez and Lorraine Racusen, establishing the first international consensus classification for renal allograft pathology.' },
