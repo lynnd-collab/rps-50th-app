@@ -143,7 +143,6 @@ function Lightbox({ photos, index, onClose, onPrev, onNext }) {
       className="fixed inset-0 flex items-center justify-center bg-black/85"
       style={{
         zIndex: 200,
-        height: '100dvh',
         paddingTop: 'env(safe-area-inset-top)',
         paddingBottom: 'env(safe-area-inset-bottom)',
       }}
@@ -182,7 +181,7 @@ function Lightbox({ photos, index, onClose, onPrev, onNext }) {
           alt={photo.caption ?? 'Gallery photo'}
           className="w-full rounded-lg shadow-2xl"
           style={{
-            maxHeight: 'calc(100dvh - 160px)',
+            maxHeight: 'calc(100svh - 160px)',
             objectFit: 'contain',
           }}
         />
