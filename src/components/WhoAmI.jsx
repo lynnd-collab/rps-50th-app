@@ -118,7 +118,7 @@ const PATHOLOGISTS = [
       'In 1974 I became pathologist-in-chief at Massachusetts General Hospital, and in 1982 became the first Benjamin Castleman Professor of Pathology at Harvard.',
       'I was a key instigator of the WHO classification of lupus glomerulonephritis and a founding member of the Renal Pathology Club in 1977.',
       'I was known for hosting Shakespeare readings on my porch, and colleagues said my dry wit could deflate the pompous with a choice remark.',
-      'My friends and colleagues have always called me "Mac."',
+      'My friends and colleagues have always called me "Mac".',
     ],
     answer: 'Robert McCluskey',
   },
