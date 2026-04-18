@@ -25,7 +25,7 @@ export default function App() {
 
   function handleTabChange(tab) {
     setActiveTab(tab)
-    if (tab === 'Celebrate' || tab === 'Awards') {
+    if (tab === 'Celebrate' || tab === 'Awards' || tab === 'History') {
       setTimeout(triggerConfetti, 500)
     }
   }

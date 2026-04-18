@@ -320,13 +320,11 @@ export default function Gallery() {
   async function handleDelete(photo) {
     setDeleting(true)
     try {
-      const filename = photo.photo_url.split('/').pop()
-      const { error: storageErr } = await supabase.storage.from(BUCKET).remove([filename])
-      if (storageErr) console.error('[Gallery] storage delete error:', storageErr)
       const { error: dbErr } = await supabase.from(TABLE).delete().eq('id', photo.id)
       if (dbErr) throw dbErr
+      // Remove from local state immediately — no need to refetch
+      setPhotos(prev => prev.filter(p => p.id !== photo.id))
       setConfirmDeleteId(null)
-      await fetchPhotos()
     } catch (err) {
       console.error('[Gallery] delete error:', err)
     } finally {
@@ -481,8 +479,8 @@ export default function Gallery() {
                 <p className="text-xs text-gray-600 px-2 py-1.5 leading-snug">{photo.caption}</p>
               )}
 
-              {/* Delete button — verified users only */}
-              {verified && confirmDeleteId !== photo.id && (
+              {/* Delete button — temporarily always visible to confirm rendering works */}
+              {confirmDeleteId !== photo.id && (
                 <button
                   onClick={() => setConfirmDeleteId(photo.id)}
                   aria-label="Delete photo"

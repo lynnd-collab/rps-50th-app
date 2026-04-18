@@ -61,7 +61,7 @@ export const events = [
 
 export const awards = {
   heptinstall: {
-    name: 'Heptinstall Award',
+    name: 'Robert H. Heptinstall Lifetime Achievement Award',
     description: 'Dr. Robert H. Heptinstall was the retired Blaxley Professor of Pathology and Pathologist-in-Chief of Johns Hopkins University and Johns Hopkins Hospital. The award recognised individuals who achieved a stellar career in pathology with pioneering discoveries and outstanding contributions to renal pathology. RPS members travelled to his home in Baltimore on November 8, 2011 to present Dr. Heptinstall with the award bearing his name.',
     recipients: [
       { year: 2026, name: 'Agnes Fogo' },
@@ -82,7 +82,7 @@ export const awards = {
   },
   churg: {
     name: 'Jacob Churg Award',
-    description: 'Presented annually at the USCAP RPS event to an individual who has made major contributions to nephropathology. Established by Barnert Hospital, where Dr. Churg spent a substantial portion of his career prior to his retirement in 1996.',
+    description: 'Presented annually at the USCAP RPS event to an individual who has made major contributions to the field of nephropathology. Established by Barnert Hospital, where Dr. Churg spent a substantial portion of his career prior to his retirement in 1996.',
     recipients: [
       { year: 2026, name: 'Lynn Cornell' },
       { year: 2025, name: 'Glen Markowitz' },
@@ -120,7 +120,7 @@ export const awards = {
     name: 'Gloria Gallo Research Award',
     description: 'Established in 2009 to honour Gloria Gallo\'s research contributions and her role in the RPS. Awarded to a mid-career investigator who made significant research contributions to renal pathology.',
     recipients: [
-      { year: 2026, name: 'Satoru Kudose' },
+      { year: 2025, name: 'Satoru Kudose' },
       { year: 2024, name: 'Tiffany Caza' },
       { year: 2023, name: 'Nicole K. Andeen' },
       { year: 2022, name: 'Benjamin Adam' },
