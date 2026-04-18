@@ -135,7 +135,7 @@ export default function Celebrate() {
 
       <Gallery />
 
-      <div className="mt-8 pb-32">
+      <div className="mt-8 pb-52">
         <WhoAmI />
       </div>
     </div>
