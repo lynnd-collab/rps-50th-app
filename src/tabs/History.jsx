@@ -52,6 +52,40 @@ export default function History() {
       </section>
 
       <section>
+        <h2 className="text-[#0C447C] text-lg font-bold mb-3">Our Beginning</h2>
+        <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 space-y-4 text-sm text-gray-700 leading-relaxed">
+          <p>
+            The society was initiated by a group of renal pathologists (Jay Bernstein, P. Burkholder,
+            J. Churg, R. Cotran, F. Cuppage, D. Jones, M. Kashgarian, J. Kissane, K. Mostofi, and
+            G. Striker), acting in large measure at the instigation of Conrad Pirani who served as
+            acting chairman. They met on November 20, 1977, during the American Society of Nephrology
+            meeting at the Washington Hilton Hotel, to consider the creation of a renal pathologists'
+            organisation. Fred Silva assisted as secretary. The Renal Pathology Club was then born
+            which organised conferences for over 10 years at the annual American Society of Nephrology
+            (ASN), the National Kidney Foundation (NKF), and the United States and Canadian Academy
+            of Pathology (USCAP) meetings.
+          </p>
+          <p>
+            Some years later, a steering committee was appointed to oversee the transition from club
+            to society. Jay Bernstein, Frank A. Carone, Arthur H. Cohen, Robert B. Colvin, Ramzi
+            Cotran, Vivette D'Agati, Gloria R. Gallo, Gary S. Hill, J. Charles Jennette, Michael
+            Kashgarian, Vivian Pinn-Wiggins, H.G. Rennke, Seymour Rosen, Benjamin Spargo, Liliane
+            M. Striker, and M.A. Venkatachalam participated in the transition and the Renal Pathology
+            Club became the Renal Pathology Society in March 1993. Members of the Renal Pathology
+            Club automatically became charter members of the new Renal Pathology Society.
+          </p>
+          <p>
+            The first RPS President was Gloria Gallo and the first Secretary was J. Charles Jennette.
+            RPS has over 400 registered members from over 30 countries and all continents: Australia,
+            Austria, Belgium, Brazil, Bulgaria, Canada, Chile, Colombia, Croatia, Denmark, France,
+            Germany, Greece, Iceland, India, Iran, Italy, Japan, Korea, Malaysia, Mexico, Nigeria,
+            Norway, Russia, Saudi Arabia, Scotland, Singapore, Slovenia, Spain, Sweden, Switzerland,
+            Thailand, The Netherlands, Turkey, United Kingdom, United States of America, and Venezuela.
+          </p>
+        </div>
+      </section>
+
+      <section>
         <h2 className="text-[#0C447C] text-lg font-bold mb-1">Landmark Publications</h2>
         <p className="text-xs text-gray-500 mb-4">
           Selected publications with significant RPS involvement that have shaped the field.
