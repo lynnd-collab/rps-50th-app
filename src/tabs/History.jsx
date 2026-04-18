@@ -28,9 +28,10 @@ export default function History() {
         <p className="text-sm italic text-gray-500 leading-relaxed">
           Renal pathology and nephrology grew up together. The kidney biopsy, introduced in the
           early 1950s, gave pathologists living patient tissue to study and gave nephrologists a
-          diagnostic tool that changed practice overnight. In the decades that followed, pathologists
-          and nephrologists collaborated on classification systems, taught one another's trainees,
-          and built a shared scientific language.
+          diagnostic tool that would transform the understanding and management of kidney disease.
+          In the decades that followed, pathologists and nephrologists worked side by side, defining
+          patterns of injury, developing classification systems, and establishing diagnoses of specific
+          diseases through communication and clinicopathologic correlation.
         </p>
       </blockquote>
 

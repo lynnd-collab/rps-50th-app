@@ -47,10 +47,10 @@ function Countdown() {
         <p className="text-xs font-semibold tracking-widest uppercase text-white/60 mb-0.5">
           Countdown to
         </p>
-        <p className="text-sm font-bold text-white leading-tight">
+        <p className="font-bold text-white leading-tight" style={{ fontSize: '22px' }}>
           🎂 RPS 50th Birthday Party 🎂
         </p>
-        <p className="text-xs text-white/60 mt-0.5">March 14, 2027 · 7:00 PM PDT · Vancouver</p>
+        <p className="text-sm text-white/60 mt-0.5">March 14, 2027 · 7:00 PM PDT · Vancouver</p>
       </div>
       <div
         className="px-4 py-5 flex items-center justify-center gap-4"
