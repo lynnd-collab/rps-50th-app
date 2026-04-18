@@ -194,6 +194,55 @@ function Lightbox({ photos, index, onClose, onPrev, onNext }) {
   )
 }
 
+// ─── PhotoCard ────────────────────────────────────────────────────────────────
+
+function PhotoCard({ photo, index, confirmDeleteId, setConfirmDeleteId, setLightboxIndex, handleDelete, deleting }) {
+  return (
+    <div className="relative rounded-xl overflow-hidden bg-white border border-gray-100 shadow-sm">
+      <img
+        src={photo.photo_url}
+        alt={photo.caption ?? 'Gallery photo'}
+        className="w-full aspect-square object-cover cursor-pointer"
+        loading="lazy"
+        onClick={() => confirmDeleteId !== photo.id && setLightboxIndex(index)}
+      />
+      {photo.caption && (
+        <p className="text-xs text-gray-600 px-2 py-1.5 leading-snug">{photo.caption}</p>
+      )}
+      {confirmDeleteId !== photo.id && (
+        <button
+          onClick={() => setConfirmDeleteId(photo.id)}
+          aria-label="Delete photo"
+          className="absolute top-1.5 right-1.5 w-7 h-7 flex items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+        >
+          <TrashIcon />
+        </button>
+      )}
+      {confirmDeleteId === photo.id && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/60 rounded-xl p-2">
+          <p className="text-white text-xs font-semibold text-center leading-tight">Delete this photo?</p>
+          <div className="flex gap-2">
+            <button
+              onClick={() => handleDelete(photo)}
+              disabled={deleting}
+              className="px-3 py-1 text-xs font-bold bg-red-500 text-white rounded-lg hover:bg-red-600 disabled:opacity-50 transition-colors"
+            >
+              {deleting ? '…' : 'Yes'}
+            </button>
+            <button
+              onClick={() => setConfirmDeleteId(null)}
+              disabled={deleting}
+              className="px-3 py-1 text-xs font-bold bg-white text-gray-700 rounded-lg hover:bg-gray-100 disabled:opacity-50 transition-colors"
+            >
+              No
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 // ─── Gallery ──────────────────────────────────────────────────────────────────
 
 export default function Gallery() {
@@ -213,6 +262,16 @@ export default function Gallery() {
   const [deleting, setDeleting] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(null)
   const fileInputRef = useRef(null)
+  const gridScrollRef = useRef(null)
+  const [gridPage, setGridPage] = useState(0)
+
+  const pageCount = Math.ceil(photos.length / 2)
+
+  function scrollToPage(p) {
+    if (!gridScrollRef.current) return
+    gridScrollRef.current.scrollTo({ left: p * gridScrollRef.current.clientWidth, behavior: 'smooth' })
+    setGridPage(p)
+  }
 
   useEffect(() => {
     async function diagnose() {
@@ -463,59 +522,88 @@ export default function Gallery() {
             No photos yet — check back soon!
           </p>
         </div>
-      ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+      ) : photos.length <= 4 ? (
+        // Static 2-column grid for 4 or fewer photos
+        <div className="grid grid-cols-2 gap-3">
           {photos.map((photo, i) => (
-            <div key={photo.id} className="relative rounded-xl overflow-hidden bg-white border border-gray-100 shadow-sm">
-              <img
-                src={photo.photo_url}
-                alt={photo.caption ?? 'Gallery photo'}
-                className="w-full aspect-square object-cover cursor-pointer"
-                loading="lazy"
-                // Don't open lightbox if this card's delete confirmation is showing
-                onClick={() => confirmDeleteId !== photo.id && setLightboxIndex(i)}
-              />
-              {photo.caption && (
-                <p className="text-xs text-gray-600 px-2 py-1.5 leading-snug">{photo.caption}</p>
-              )}
-
-              {/* Delete button — temporarily always visible to confirm rendering works */}
-              {confirmDeleteId !== photo.id && (
-                <button
-                  onClick={() => setConfirmDeleteId(photo.id)}
-                  aria-label="Delete photo"
-                  className="absolute top-1.5 right-1.5 w-7 h-7 flex items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
-                >
-                  <TrashIcon />
-                </button>
-              )}
-
-              {/* Delete confirmation overlay */}
-              {confirmDeleteId === photo.id && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/60 rounded-xl p-2">
-                  <p className="text-white text-xs font-semibold text-center leading-tight">
-                    Delete this photo?
-                  </p>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => handleDelete(photo)}
-                      disabled={deleting}
-                      className="px-3 py-1 text-xs font-bold bg-red-500 text-white rounded-lg hover:bg-red-600 disabled:opacity-50 transition-colors"
-                    >
-                      {deleting ? '…' : 'Yes'}
-                    </button>
-                    <button
-                      onClick={() => setConfirmDeleteId(null)}
-                      disabled={deleting}
-                      className="px-3 py-1 text-xs font-bold bg-white text-gray-700 rounded-lg hover:bg-gray-100 disabled:opacity-50 transition-colors"
-                    >
-                      No
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
+            <PhotoCard
+              key={photo.id}
+              photo={photo}
+              index={i}
+              confirmDeleteId={confirmDeleteId}
+              setConfirmDeleteId={setConfirmDeleteId}
+              setLightboxIndex={setLightboxIndex}
+              handleDelete={handleDelete}
+              deleting={deleting}
+            />
           ))}
+        </div>
+      ) : (
+        // Horizontally scrollable 2-at-a-time for 5+ photos
+        <div className="relative">
+          <div
+            ref={gridScrollRef}
+            className="flex overflow-x-auto snap-x snap-mandatory"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            onScroll={(e) => {
+              const el = e.currentTarget
+              setGridPage(Math.round(el.scrollLeft / el.clientWidth))
+            }}
+          >
+            {Array.from({ length: pageCount }).map((_, pi) => (
+              <div key={pi} className="flex-shrink-0 w-full grid grid-cols-2 gap-3 snap-start pr-0">
+                {photos.slice(pi * 2, pi * 2 + 2).map((photo, offset) => (
+                  <PhotoCard
+                    key={photo.id}
+                    photo={photo}
+                    index={pi * 2 + offset}
+                    confirmDeleteId={confirmDeleteId}
+                    setConfirmDeleteId={setConfirmDeleteId}
+                    setLightboxIndex={setLightboxIndex}
+                    handleDelete={handleDelete}
+                    deleting={deleting}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+
+          {/* Prev arrow */}
+          {gridPage > 0 && (
+            <button
+              onClick={() => scrollToPage(gridPage - 1)}
+              aria-label="Previous photos"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 w-8 h-8 flex items-center justify-center rounded-full bg-white shadow border border-gray-100 text-[#0C447C] hover:bg-gray-50 transition-colors"
+              style={{ zIndex: 10 }}
+            >
+              <ChevronLeftIcon />
+            </button>
+          )}
+
+          {/* Next arrow */}
+          {gridPage < pageCount - 1 && (
+            <button
+              onClick={() => scrollToPage(gridPage + 1)}
+              aria-label="Next photos"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 w-8 h-8 flex items-center justify-center rounded-full bg-white shadow border border-gray-100 text-[#0C447C] hover:bg-gray-50 transition-colors"
+              style={{ zIndex: 10 }}
+            >
+              <ChevronRightIcon />
+            </button>
+          )}
+
+          {/* Page dots */}
+          <div className="flex justify-center gap-1.5 mt-3">
+            {Array.from({ length: pageCount }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => scrollToPage(i)}
+                aria-label={`Page ${i + 1}`}
+                className="w-1.5 h-1.5 rounded-full transition-colors"
+                style={{ backgroundColor: i === gridPage ? '#0C447C' : '#d1d5db' }}
+              />
+            ))}
+          </div>
         </div>
       )}
     </section>
