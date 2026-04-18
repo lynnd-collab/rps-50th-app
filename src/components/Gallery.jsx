@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import { supabase } from '../lib/supabase'
 
 const GALLERY_PASSWORD = 'rps50'
@@ -127,7 +128,7 @@ function Lightbox({ photos, index, onClose, onPrev, onNext }) {
     touchStartY.current = null
   }
 
-  return (
+  return createPortal(
     // Backdrop — click outside photo to close
     <div
       className="fixed inset-0 flex items-center justify-center bg-black/85"
@@ -203,7 +204,8 @@ function Lightbox({ photos, index, onClose, onPrev, onNext }) {
           {index + 1} / {photos.length}
         </p>
       )}
-    </div>
+    </div>,
+    document.body
   )
 }
 
