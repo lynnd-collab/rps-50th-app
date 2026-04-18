@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { timeline, publications } from '../data'
+import { timeline } from '../data'
 
 export default function History() {
   const listRef = useRef(null)
@@ -92,25 +92,6 @@ export default function History() {
             Norway, Russia, Saudi Arabia, Scotland, Singapore, Slovenia, Spain, Sweden, Switzerland,
             Thailand, The Netherlands, Turkey, United Kingdom, United States of America, and Venezuela.
           </p>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-[#0C447C] text-lg font-bold mb-1">Landmark Publications</h2>
-        <p className="text-xs text-gray-500 mb-4">
-          Selected publications with significant RPS involvement that have shaped the field.
-        </p>
-        <div className="space-y-4">
-          {publications.map((pub, i) => (
-            <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm p-4">
-              <span className="text-xs font-semibold text-[#0C447C] bg-[#0C447C]/10 px-2 py-0.5 rounded-full">
-                {pub.year}
-              </span>
-              <p className="mt-2 text-sm font-semibold text-gray-900 leading-snug">{pub.title}</p>
-              <p className="text-xs text-gray-500 italic mt-0.5">{pub.journal}</p>
-              <p className="text-xs text-gray-600 mt-2 leading-relaxed">{pub.description}</p>
-            </div>
-          ))}
         </div>
       </section>
 

@@ -21,7 +21,7 @@ export const timeline = [
   { year: 2007, milestone: false, text: '30th anniversary celebration at USCAP in San Diego honours founding members.' },
   { year: 2009, milestone: false, text: 'Oxford classification of IgA nephropathy released. Gloria Gallo Research Award established.' },
   { year: 2025, milestone: false, text: 'RPS surpasses 400 regular members across 30+ countries, with additional trainee membership growing the community further.' },
-  { year: 2027, milestone: true, text: '50th birthday — celebrating 5 decades since Conrad Pirani gathered the founding members in Washington, D.C. to form our society.' },
+  { year: 2027, milestone: true, text: 'RPS\'s 50th birthday — celebrating 5 decades since Conrad Pirani gathered the founding members in Washington, D.C. to form our society.' },
 ]
 
 export const publications = [
