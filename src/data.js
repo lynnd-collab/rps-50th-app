@@ -61,8 +61,8 @@ export const events = [
     link: 'https://www.asn-online.org/education/kidneyweek/',
   },
   {
-    name: '🎂 RPS 50th Birthday Party',
-    dates: 'March 13–18, 2027',
+    name: '🎂 RPS 50th Birthday Party 🎂',
+    dates: 'March 14, 2027 (USCAP 2026 meeting)',
     location: 'Vancouver, BC',
     description: 'Celebrating five decades of the Renal Pathology Society at USCAP 2027. Details to be announced.',
     link: null,
