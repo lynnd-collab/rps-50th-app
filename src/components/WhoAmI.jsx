@@ -1,4 +1,6 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
+
+const SESSION_KEY = 'whoami_state'
 
 const PATHOLOGISTS = [
   {
@@ -102,18 +104,42 @@ function shuffle(arr) {
   return a
 }
 
+function loadSession() {
+  try {
+    const raw = sessionStorage.getItem(SESSION_KEY)
+    if (raw) return JSON.parse(raw)
+  } catch {}
+  return null
+}
+
+function saveSession(state) {
+  try { sessionStorage.setItem(SESSION_KEY, JSON.stringify(state)) } catch {}
+}
+
+function clearSession() {
+  try { sessionStorage.removeItem(SESSION_KEY) } catch {}
+}
+
 export default function WhoAmI() {
-  const [deck, setDeck] = useState(() => shuffle(PATHOLOGISTS))
-  const [cardIndex, setCardIndex] = useState(0)
-  const [cluesShown, setCluesShown] = useState(1)
-  const [showAnswer, setShowAnswer] = useState(false)
+  const [deck, setDeck] = useState(() => {
+    const saved = loadSession()
+    return saved ? saved.deck : shuffle(PATHOLOGISTS)
+  })
+  const [cardIndex, setCardIndex] = useState(() => loadSession()?.cardIndex ?? 0)
+  const [cluesShown, setCluesShown] = useState(() => loadSession()?.cluesShown ?? 1)
+  const [showAnswer, setShowAnswer] = useState(() => loadSession()?.showAnswer ?? false)
 
   const card = deck[cardIndex]
   const allCluesShown = cluesShown >= card.clues.length
 
+  useEffect(() => {
+    saveSession({ deck, cardIndex, cluesShown, showAnswer })
+  }, [deck, cardIndex, cluesShown, showAnswer])
+
   const nextPathologist = useCallback(() => {
     const next = cardIndex + 1
     if (next >= deck.length) {
+      clearSession()
       setDeck(shuffle(PATHOLOGISTS))
       setCardIndex(0)
     } else {
