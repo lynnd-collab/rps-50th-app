@@ -86,10 +86,10 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
-      'I was the first recipient of the Jacob Churg Award in 1997.',
-      'I served as RPS President in 2004.',
-      'I co-authored the seminal paper on ANCA-associated vasculitis with Ronald Falk.',
-      'I co-authored "Historical Milestones in Renal Pathology" with Jan Weening.',
+      'I helped move pauci-immune necrotizing and crescentic GN from pattern recognition toward pathogenesis.',
+      'UNC Chapel Hill is my academic home.',
+      'In 1997, the Renal Pathology Society gave me the first Jacob Churg Award.',
+      'I helped carry forward Heptinstall\'s textbook legacy.',
     ],
     answer: 'J. Charles Jennette',
   },
