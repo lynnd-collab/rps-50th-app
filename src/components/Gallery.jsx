@@ -78,6 +78,15 @@ function ChevronRightIcon() {
   )
 }
 
+function PencilIcon() {
+  return (
+    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+        d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 112.828 2.828L11.828 15.828a2 2 0 01-1.414.586H8v-2.414a2 2 0 01.586-1.414z" />
+    </svg>
+  )
+}
+
 function Spinner() {
   return (
     <div className="flex justify-center py-10">
@@ -263,7 +272,24 @@ async function compressImage(file) {
 
 // ─── PhotoCard ────────────────────────────────────────────────────────────────
 
-function PhotoCard({ photo, index, verified, confirmDeleteId, setConfirmDeleteId, setLightboxIndex, handleDelete, deleting }) {
+function PhotoCard({ photo, index, verified, confirmDeleteId, setConfirmDeleteId, setLightboxIndex, handleDelete, deleting, onUpdateCaption }) {
+  const [isEditing, setIsEditing] = useState(false)
+  const [editText, setEditText] = useState(photo.caption ?? '')
+  const [saving, setSaving] = useState(false)
+
+  async function saveCaption() {
+    setSaving(true)
+    const trimmed = editText.trim()
+    await onUpdateCaption(photo.id, trimmed || null)
+    setSaving(false)
+    setIsEditing(false)
+  }
+
+  function cancelEdit() {
+    setEditText(photo.caption ?? '')
+    setIsEditing(false)
+  }
+
   return (
     <div className="relative rounded-xl overflow-hidden bg-white border border-gray-100 shadow-sm">
       <img
@@ -271,10 +297,53 @@ function PhotoCard({ photo, index, verified, confirmDeleteId, setConfirmDeleteId
         alt={photo.caption ?? 'Gallery photo'}
         className="w-full aspect-square object-cover cursor-pointer"
         loading="lazy"
-        onClick={() => confirmDeleteId !== photo.id && setLightboxIndex(index)}
+        onClick={() => confirmDeleteId !== photo.id && !isEditing && setLightboxIndex(index)}
       />
-      {photo.caption && (
-        <p className="text-xs text-gray-600 px-2 py-1.5 leading-snug">{photo.caption}</p>
+
+      {/* Caption display / edit */}
+      {isEditing ? (
+        <div className="px-2 pt-1.5 pb-2 space-y-1.5">
+          <input
+            autoFocus
+            value={editText}
+            onChange={(e) => setEditText(e.target.value)}
+            maxLength={200}
+            placeholder="Add a caption…"
+            className="w-full text-xs border border-gray-200 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-[#0C447C]/30"
+          />
+          <div className="flex gap-1.5">
+            <button
+              onClick={saveCaption}
+              disabled={saving}
+              className="flex-1 text-[10px] font-bold py-1 rounded bg-[#0C447C] text-white disabled:opacity-50"
+            >
+              {saving ? '…' : 'Save'}
+            </button>
+            <button
+              onClick={cancelEdit}
+              disabled={saving}
+              className="flex-1 text-[10px] font-bold py-1 rounded bg-gray-100 text-gray-600"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="flex items-start gap-1 px-2 py-1.5 min-h-[28px]">
+          {photo.caption && (
+            <p className="text-xs text-gray-600 leading-snug flex-1">{photo.caption}</p>
+          )}
+          {verified && (
+            <button
+              onClick={() => { setEditText(photo.caption ?? ''); setIsEditing(true) }}
+              aria-label="Edit caption"
+              className="flex-shrink-0 p-0.5 rounded hover:bg-gray-100 transition-colors"
+              style={{ color: '#fb27e8' }}
+            >
+              <PencilIcon />
+            </button>
+          )}
+        </div>
       )}
       {verified && confirmDeleteId !== photo.id && (
         <button
@@ -454,6 +523,12 @@ export default function Gallery() {
     }
   }
 
+  async function handleUpdateCaption(id, newCaption) {
+    const { error } = await supabase.from(TABLE).update({ caption: newCaption }).eq('id', id)
+    if (error) { console.error('[Gallery] caption update error:', error); return }
+    setPhotos(prev => prev.map(p => p.id === id ? { ...p, caption: newCaption } : p))
+  }
+
   async function handleDelete(photo) {
     setDeleting(true)
     try {
@@ -621,6 +696,7 @@ export default function Gallery() {
               setLightboxIndex={setLightboxIndex}
               handleDelete={handleDelete}
               deleting={deleting}
+              onUpdateCaption={handleUpdateCaption}
             />
           ))}
         </div>
@@ -649,6 +725,7 @@ export default function Gallery() {
                     setLightboxIndex={setLightboxIndex}
                     handleDelete={handleDelete}
                     deleting={deleting}
+                    onUpdateCaption={handleUpdateCaption}
                   />
                 ))}
               </div>
