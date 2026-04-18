@@ -24,6 +24,16 @@ export default function History() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-6 space-y-10">
+      <blockquote className="border-l-4 border-[#0C447C]/30 pl-4 pr-2 py-1">
+        <p className="text-sm italic text-gray-500 leading-relaxed">
+          Renal pathology and nephrology grew up together. The kidney biopsy, introduced in the
+          early 1950s, gave pathologists living patient tissue to study and gave nephrologists a
+          diagnostic tool that changed practice overnight. In the decades that followed, pathologists
+          and nephrologists collaborated on classification systems, taught one another's trainees,
+          and built a shared scientific language.
+        </p>
+      </blockquote>
+
       <section>
         <h2 className="text-[#0C447C] text-lg font-bold mb-4">Timeline</h2>
         <ol ref={listRef} className="relative border-l-2 border-[#0C447C]/20 space-y-0">
