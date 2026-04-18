@@ -1,8 +1,11 @@
 export const timeline = [
+  { year: 1951, milestone: true, text: 'Iversen and Brun perform the first published percutaneous kidney biopsies, launching the modern era of renal pathology.' },
+  { year: 1961, milestone: false, text: 'The CIBA Symposium in London brings together clinicians and pathologists to assess the future of kidney biopsy, establishing it as standard of care at major renal centres worldwide.' },
+  { year: 1966, milestone: false, text: 'Robert Heptinstall publishes the first edition of Pathology of the Kidney, the field\'s foundational textbook.' },
   { year: 1977, milestone: true, text: 'Conrad Pirani convenes founding members at the ASN meeting in Washington, D.C. The Renal Pathology Club is born.' },
   { year: 1978, milestone: true, text: 'First scientific symposium held in New Orleans — topic: focal segmental glomerulosclerosis. Constitution and bylaws established.' },
-  { year: 1981, milestone: false, text: 'RPC accepts ASN co-sponsorship of a jointly sponsored scientific session. Robert Heptinstall becomes second President.' },
-  { year: 1991, milestone: false, text: 'RPC becomes the 13th official USCAP Companion Society.' },
+  { year: 1981, milestone: false, text: 'The Renal Pathology Club accepts ASN co-sponsorship of a jointly sponsored scientific session. Robert Heptinstall becomes second President.' },
+  { year: 1991, milestone: false, text: 'The Renal Pathology Club becomes the 13th official USCAP Companion Society.' },
   { year: 1993, milestone: true, text: 'The Renal Pathology Club formally evolves into the Renal Pathology Society. Gloria Gallo becomes first RPS President.' },
   { year: 1995, milestone: false, text: 'Young Investigator Award established; Shane Meehan is the first recipient.' },
   { year: 1997, milestone: false, text: 'Jacob Churg Award established; J. Charles Jennette is the first recipient.' },
@@ -11,7 +14,7 @@ export const timeline = [
   { year: 2007, milestone: false, text: '30th anniversary celebration at USCAP in San Diego honours founding members.' },
   { year: 2009, milestone: false, text: 'Oxford classification of IgA nephropathy released. Gloria Gallo Research Award established.' },
   { year: 2025, milestone: false, text: 'RPS surpasses 400 regular members across 30+ countries, with additional trainee membership growing the community further.' },
-  { year: 2027, milestone: true, text: '50th birthday — celebrating five decades of renal pathology.' },
+  { year: 2027, milestone: true, text: '50th birthday — celebrating 5 decades since Conrad Pirani gathered the founding members in Washington, D.C. to form our society.' },
 ]
 
 export const publications = [
