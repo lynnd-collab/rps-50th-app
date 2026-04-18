@@ -261,7 +261,7 @@ async function compressImage(file) {
 
 // ─── PhotoCard ────────────────────────────────────────────────────────────────
 
-function PhotoCard({ photo, index, confirmDeleteId, setConfirmDeleteId, setLightboxIndex, handleDelete, deleting }) {
+function PhotoCard({ photo, index, verified, confirmDeleteId, setConfirmDeleteId, setLightboxIndex, handleDelete, deleting }) {
   return (
     <div className="relative rounded-xl overflow-hidden bg-white border border-gray-100 shadow-sm">
       <img
@@ -274,7 +274,7 @@ function PhotoCard({ photo, index, confirmDeleteId, setConfirmDeleteId, setLight
       {photo.caption && (
         <p className="text-xs text-gray-600 px-2 py-1.5 leading-snug">{photo.caption}</p>
       )}
-      {confirmDeleteId !== photo.id && (
+      {verified && confirmDeleteId !== photo.id && (
         <button
           onClick={() => setConfirmDeleteId(photo.id)}
           aria-label="Delete photo"
@@ -457,11 +457,12 @@ export default function Gallery() {
     try {
       const { error: dbErr } = await supabase.from(TABLE).delete().eq('id', photo.id)
       if (dbErr) throw dbErr
-      // Remove from local state immediately — no need to refetch
       setPhotos(prev => prev.filter(p => p.id !== photo.id))
       setConfirmDeleteId(null)
     } catch (err) {
       console.error('[Gallery] delete error:', err)
+      setConfirmDeleteId(null)
+      setUploadError('Delete failed: ' + (err.message || 'unknown error'))
     } finally {
       setDeleting(false)
     }
@@ -612,6 +613,7 @@ export default function Gallery() {
               key={photo.id}
               photo={photo}
               index={i}
+              verified={verified}
               confirmDeleteId={confirmDeleteId}
               setConfirmDeleteId={setConfirmDeleteId}
               setLightboxIndex={setLightboxIndex}
@@ -639,6 +641,7 @@ export default function Gallery() {
                     key={photo.id}
                     photo={photo}
                     index={pi * 2 + offset}
+                    verified={verified}
                     confirmDeleteId={confirmDeleteId}
                     setConfirmDeleteId={setConfirmDeleteId}
                     setLightboxIndex={setLightboxIndex}
