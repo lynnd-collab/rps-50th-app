@@ -6,7 +6,10 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: 'autoUpdate',
+      // 'prompt' keeps the new SW in "waiting" state until we explicitly
+      // call updateServiceWorker(true), so we control exactly when the
+      // update is applied rather than applying it silently in the background.
+      registerType: 'prompt',
       manifest: {
         name: 'RPS 50th Anniversary',
         short_name: 'RPS 50th',

@@ -22,9 +22,14 @@ const QUOTES = [
     attribution: 'Conrad Pirani, on the 1961 CIBA Symposium in London',
     context: null,
   },
+  {
+    quote: 'The kidney reacts in a limited fashion to a thousand different injuries.',
+    attribution: 'Fred G. Silva',
+    context: 'Fred Silva was not only a major teacher in renal pathology, but also part of the Society\'s early leadership and historical memory. His observation that the kidney has only a limited repertoire of responses to injury captures one of the central interpretive challenges of nephropathology.',
+  },
 ]
 
-const INTERVAL = 10000
+const INTERVAL = 15000
 const FADE_MS = 200
 
 function QuoteCarousel() {

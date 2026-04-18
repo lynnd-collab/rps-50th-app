@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import Header from './components/Header'
 import TabBar from './components/TabBar'
 import Confetti from './components/Confetti'
+import UpdateBanner from './components/UpdateBanner'
 import History from './tabs/History'
 import Celebrate from './tabs/Celebrate'
 import Awards from './tabs/Awards'
@@ -32,6 +33,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      <UpdateBanner />
       {confettiKey && (
         <Confetti key={confettiKey} onDone={() => setConfettiKey(null)} />
       )}
