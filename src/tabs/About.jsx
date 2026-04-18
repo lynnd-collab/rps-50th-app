@@ -23,7 +23,7 @@ const QUOTES = [
     context: null,
   },
   {
-    quote: 'The kidney reacts in a limited fashion to a thousand different injuries.',
+    quote: 'The kidney has a limited number of ways to respond to an innumerable number of injuries.',
     attribution: 'Fred G. Silva',
     context: 'Fred Silva was not only a major teacher in renal pathology, but also part of the Society\'s early leadership and historical memory. His observation that the kidney has only a limited repertoire of responses to injury captures one of the central interpretive challenges of nephropathology.',
   },
