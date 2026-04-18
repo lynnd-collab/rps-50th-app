@@ -86,6 +86,43 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
+      'I was a pioneering French pathologist who specialised in pediatric renal pathology, based at the Necker Hospital in Paris.',
+      'By studying thousands of biopsy cases, I helped define minimal change disease, FSGS, and diffuse mesangial sclerosis in children with nephrotic syndrome.',
+      'I provided the first full description of the renal pathology of hemolytic uremic syndrome.',
+      'I received the ASN John Peters Award in 1989 and the Légion d\'Honneur from the President of France in 1988.',
+    ],
+    answer: 'Renée Habib',
+  },
+  {
+    clues: [
+      'I was one of the original founding members of the Renal Pathology Club in 1977.',
+      'I chaired the very first RPS scientific symposium in New Orleans in 1978, on focal segmental glomerulosclerosis.',
+      'I served as RPS President in 1994 and was based at Yale University School of Medicine.',
+      'I received both the Jacob Churg Award and the Robert Heptinstall Lifetime Achievement Award.',
+    ],
+    answer: 'Michael Kashgarian',
+  },
+  {
+    clues: [
+      'I was a French pathologist who trained at Hôpital Tenon in Paris, working alongside pioneers including Renée Habib and Jean Berger.',
+      'I was a principal figure in developing the initial WHO classification of lupus nephritis.',
+      'I edited The Renal Biopsy, a widely used textbook in the Major Problems in Pathology series.',
+      'The RPS Young Investigator Award was renamed in my honour in 2006.',
+    ],
+    answer: 'Liliane Striker',
+  },
+  {
+    clues: [
+      'I started my career at NYU, where together with Gloria Gallo I pioneered the application of immunofluorescence microscopy to human kidney biopsies.',
+      'In 1974 I became pathologist-in-chief at Massachusetts General Hospital, and in 1982 became the first Benjamin Castleman Professor of Pathology at Harvard.',
+      'I was a key instigator of the WHO classification of lupus glomerulonephritis and a founding member of the Renal Pathology Club in 1977.',
+      'I was known for hosting Shakespeare readings on my porch, and colleagues said my dry wit could deflate the pompous with a choice remark.',
+      'My friends and colleagues have always called me "Mac."',
+    ],
+    answer: 'Robert McCluskey',
+  },
+  {
+    clues: [
       'I helped move pauci-immune necrotizing and crescentic GN from pattern recognition toward pathogenesis.',
       'UNC Chapel Hill is my academic home.',
       'In 1997, the Renal Pathology Society gave me the first Jacob Churg Award.',
