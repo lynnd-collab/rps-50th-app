@@ -47,7 +47,7 @@ export const publications = [
 
 export const events = [
   {
-    name: 'Banff Conference on Allograft Pathology',
+    name: 'Banff Conference on Transplant Pathology',
     dates: 'October 5–9, 2026',
     location: 'Banff, Alberta',
     description: null,
