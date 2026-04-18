@@ -131,7 +131,12 @@ function Lightbox({ photos, index, onClose, onPrev, onNext }) {
     // Backdrop — click outside photo to close
     <div
       className="fixed inset-0 flex items-center justify-center bg-black/85"
-      style={{ zIndex: 200 }}
+      style={{
+        zIndex: 200,
+        height: '100dvh',
+        paddingTop: 'env(safe-area-inset-top)',
+        paddingBottom: 'env(safe-area-inset-bottom)',
+      }}
       onClick={onClose}
     >
       {/* Close */}
@@ -139,6 +144,7 @@ function Lightbox({ photos, index, onClose, onPrev, onNext }) {
         onClick={onClose}
         aria-label="Close"
         className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
+        style={{ top: 'calc(env(safe-area-inset-top) + 16px)' }}
       >
         <XIcon />
       </button>
@@ -164,7 +170,11 @@ function Lightbox({ photos, index, onClose, onPrev, onNext }) {
         <img
           src={photo.photo_url}
           alt={photo.caption ?? 'Gallery photo'}
-          className="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl"
+          className="w-full rounded-lg shadow-2xl"
+          style={{
+            maxHeight: 'calc(100dvh - 160px)',
+            objectFit: 'contain',
+          }}
         />
         {photo.caption && (
           <p className="text-white text-sm mt-3 text-center max-w-xs leading-snug px-2">
@@ -186,12 +196,67 @@ function Lightbox({ photos, index, onClose, onPrev, onNext }) {
 
       {/* Counter */}
       {photos.length > 1 && (
-        <p className="absolute bottom-5 text-white/50 text-xs font-medium select-none">
+        <p
+          className="absolute text-white/50 text-xs font-medium select-none"
+          style={{ bottom: 'calc(env(safe-area-inset-bottom) + 20px)' }}
+        >
           {index + 1} / {photos.length}
         </p>
       )}
     </div>
   )
+}
+
+// ─── Image compression ────────────────────────────────────────────────────────
+
+const MAX_PX = 1200
+const JPEG_QUALITY = 0.8
+
+function isHeic(file) {
+  return (
+    file.type === 'image/heic' ||
+    file.type === 'image/heif' ||
+    /\.(heic|heif)$/i.test(file.name)
+  )
+}
+
+async function compressImage(file) {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file)
+    const img = new Image()
+
+    img.onload = () => {
+      URL.revokeObjectURL(url)
+      const { naturalWidth: w, naturalHeight: h } = img
+
+      let newW = w, newH = h
+      if (w > MAX_PX || h > MAX_PX) {
+        if (w >= h) { newW = MAX_PX; newH = Math.round(h * MAX_PX / w) }
+        else         { newH = MAX_PX; newW = Math.round(w * MAX_PX / h) }
+      }
+
+      const canvas = document.createElement('canvas')
+      canvas.width  = newW
+      canvas.height = newH
+      canvas.getContext('2d').drawImage(img, 0, 0, newW, newH)
+
+      canvas.toBlob(
+        (blob) => {
+          if (!blob) { reject(new Error('Compression failed')); return }
+          const baseName = file.name.replace(/\.[^.]+$/, '')
+          resolve(new File([blob], `${baseName}.jpg`, { type: 'image/jpeg' }))
+        },
+        'image/jpeg',
+        JPEG_QUALITY,
+      )
+    }
+
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Image load failed')) }
+
+    // HEIC on iOS Safari decodes natively; on other platforms onerror fires and
+    // we fall back to the original file in the catch handler in handleFileChange.
+    img.src = url
+  })
 }
 
 // ─── PhotoCard ────────────────────────────────────────────────────────────────
@@ -256,6 +321,7 @@ export default function Gallery() {
   const [file, setFile] = useState(null)
   const [preview, setPreview] = useState(null)
   const [caption, setCaption] = useState('')
+  const [compressing, setCompressing] = useState(false)
   const [uploading, setUploading] = useState(false)
   const [uploadError, setUploadError] = useState(null)
   const [confirmDeleteId, setConfirmDeleteId] = useState(null)
@@ -330,12 +396,22 @@ export default function Gallery() {
     }
   }
 
-  function handleFileChange(e) {
+  async function handleFileChange(e) {
     const chosen = e.target.files?.[0]
     if (!chosen) return
-    setFile(chosen)
     if (preview) URL.revokeObjectURL(preview)
-    setPreview(URL.createObjectURL(chosen))
+    setCompressing(true)
+    try {
+      const compressed = await compressImage(chosen)
+      setFile(compressed)
+      setPreview(URL.createObjectURL(compressed))
+    } catch {
+      // Compression failed (e.g. non-iOS browser can't decode HEIC) — use original
+      setFile(chosen)
+      setPreview(URL.createObjectURL(chosen))
+    } finally {
+      setCompressing(false)
+    }
   }
 
   async function handleUpload(e) {
@@ -487,8 +563,14 @@ export default function Gallery() {
               className="block w-full text-sm text-gray-600 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#0C447C]/10 file:text-[#0C447C] hover:file:bg-[#0C447C]/20"
             />
           </label>
-          {preview && (
-            <img src={preview} alt="Preview" className="w-full max-h-48 object-cover rounded-lg border border-gray-100" />
+          {compressing && (
+            <div className="flex items-center gap-2 text-xs text-[#0C447C]/60 py-2">
+              <div className="w-4 h-4 border-2 border-[#0C447C]/20 border-t-[#0C447C] rounded-full animate-spin flex-shrink-0" />
+              Compressing…
+            </div>
+          )}
+          {!compressing && preview && (
+            <img src={preview} alt="Preview" className="w-full max-h-48 object-contain rounded-lg border border-gray-100" />
           )}
           <label className="block">
             <span className="text-xs font-medium text-gray-600 mb-1 block">Caption (optional)</span>
@@ -504,7 +586,7 @@ export default function Gallery() {
           {uploadError && <p className="text-xs text-red-500 font-medium">{uploadError}</p>}
           <button
             type="submit"
-            disabled={uploading || !file}
+            disabled={uploading || compressing || !file}
             className="w-full bg-[#0C447C] text-white text-sm font-bold py-2.5 rounded-lg hover:bg-[#1a5a9e] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {uploading ? 'Uploading…' : 'Upload Photo'}
