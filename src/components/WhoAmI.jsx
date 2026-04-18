@@ -124,6 +124,16 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
+      'In 2002 I founded Canada\'s first annual Leonard Cohen Night in Edmonton, and Leonard Cohen himself once called me "a great master of the surreal."',
+      'My office at the University of Alberta featured a Sony Aibo robotic dog and a robotic cat named Orange.',
+      'On Easter Sunday 1991, I stopped by the Banff Centre on a whim and booked the venue for what would become one of the most influential meetings in transplant pathology.',
+      'Together with Lorraine Racusen, I led the first Banff Conference on Allograft Pathology, establishing the first international consensus classification for renal allograft pathology.',
+      'I consider myself a futurist and optimist, and am eagerly awaiting the technological singularity.',
+    ],
+    answer: 'Kim Solez',
+  },
+  {
+    clues: [
       'I am a renal transplant pathologist who has made major contributions to molecular diagnostics in allograft pathology.',
       'I served as RPS President in 2020 and received the Jacob Churg Award in 2019.',
       'I have been a key figure in the Banff classification process and am deeply knowledgeable about its history and evolution.',
