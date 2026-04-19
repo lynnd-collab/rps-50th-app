@@ -53,7 +53,7 @@ const PATHOLOGISTS = [
     clues: [
       'I am Professor of Pathology and Director of the Renal Pathology Laboratory at Columbia University.',
       'I co-led the 2004 ISN/RPS classification of lupus nephritis.',
-      'I received both the RPS Heptinstall Award and served as RPS President.',
+      'I received the Jacob Churg Award and the Heptinstall Lifetime Achievement Award from the RPS.',
       'I co-authored "The Rise of Renal Pathology in Nephrology: Structure Illuminates Function."',
     ],
     answer: 'Vivette D\'Agati',
