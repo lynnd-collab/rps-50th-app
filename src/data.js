@@ -7,6 +7,8 @@ export const timeline = [
   { year: 1957, milestone: false, text: 'Electron microscopy reveals the fine structure of the glomerulus for the first time, including podocyte foot processes, the glomerular basement membrane, and the mesangium.' },
   { year: 1961, milestone: false, text: 'The CIBA Symposium in London brings together clinicians and pathologists to assess the future of kidney biopsy, establishing it as standard of care at major renal centres worldwide.' },
   { year: 1966, milestone: false, text: 'Robert Heptinstall publishes the first edition of Pathology of the Kidney, the field\'s foundational textbook.' },
+  { year: 1970, milestone: false, text: 'Baldwin, Lowenstein, Rothfield, Gallo, and McCluskey describe three distinct clinicopathologic forms of lupus nephritis in 52 patients, laying the groundwork for a formal classification system.' },
+  { year: 1974, milestone: false, text: 'The first WHO classification of lupus nephritis is formulated under WHO auspices, establishing a standard five-class framework for categorising glomerular disease in SLE.' },
   { year: 1977, milestone: true, text: 'Conrad Pirani convenes founding members at the ASN meeting in Washington, D.C. The Renal Pathology Club is born.' },
   { year: 1978, milestone: true, text: 'First Renal Pathology Club scientific symposium held in New Orleans — Topic: Focal segmental glomerulosclerosis. Constitution and bylaws established.' },
   { year: 1981, milestone: false, text: 'The Renal Pathology Club accepts ASN co-sponsorship of a jointly sponsored scientific session. Robert Heptinstall becomes second President.' },
