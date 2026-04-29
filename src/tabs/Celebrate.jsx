@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { events } from '../data'
 import Gallery from '../components/Gallery'
 import WhoAmI from '../components/WhoAmI'
+import RenalTrivia from '../components/RenalTrivia'
 
 // March 14 2027 19:00:00 PDT = March 15 2027 02:00:00 UTC
 const PARTY_DATE = new Date('2027-03-15T02:00:00.000Z')
@@ -135,8 +136,12 @@ export default function Celebrate() {
 
       <Gallery />
 
-      <div className="mt-8 pb-52">
+      <div className="mt-8">
         <WhoAmI />
+      </div>
+
+      <div className="mt-6 pb-56">
+        <RenalTrivia />
       </div>
     </div>
   )
