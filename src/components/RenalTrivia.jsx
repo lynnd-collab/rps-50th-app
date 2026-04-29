@@ -162,6 +162,16 @@ const QUESTIONS = [
     correct: 'C',
   },
   {
+    text: 'Robert Heptinstall wrote the first edition of his landmark textbook every evening until well past midnight. Where did he do this writing?',
+    options: [
+      { letter: 'A', text: 'In his office at Johns Hopkins' },
+      { letter: 'B', text: 'In an attic room at home' },
+      { letter: 'C', text: 'During sabbatical in England' },
+      { letter: 'D', text: 'In the hospital library' },
+    ],
+    correct: 'B',
+  },
+  {
     text: "'Nephritis' combines νεφρός (nephros) with the Greek suffix -ῖτις (-itis) meaning what?",
     options: [
       { letter: 'A', text: 'Disease' },
