@@ -155,7 +155,7 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
-      'I was born in Brooklyn and did not so much plan a career in renal pathology as stumble into it, then turn it into a lifelong passion.',
+      'I was born in Brooklyn and did not so much plan a career in renal pathology as stumble into it, then turned it into a lifelong passion.',
       'I was largely self-taught in kidney pathology, with important help from masters such as Jacob Churg, Robert Heptinstall, and Conrad Pirani.',
       'In the early 1970s at Harbor-UCLA, I built one of the country\'s first comprehensive renal biopsy services, combining light microscopy, immunofluorescence, electron microscopy, and the patient\'s clinical story.',
       'I was so committed to kidney biopsies that my personalized license plate read: "LM IF EM."',
