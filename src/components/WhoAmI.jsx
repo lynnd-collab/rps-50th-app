@@ -155,6 +155,16 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
+      'I grew up in Texas, but my French improved dramatically in college after I acquired a persuasive reason to learn the language: a French girlfriend.',
+      'As a young pathologist, I was named "best new investigator" in pathology and honeymooned in Cambridge, England after being invited there.',
+      'By 1978, only ten years after graduating from Johns Hopkins School of Medicine, I had become Chief of Pathology at Johns Hopkins Bayview Medical Center.',
+      'My fluency in French eventually took me to Paris in the late 1990s, where I worked at l\'UFR Broussais Hôtel-Dieu, Université de Paris.',
+      'I was directly mentored by Robert Heptinstall, and my publications ranged from a renal pathology textbook to a French-English medical dictionary.',
+    ],
+    answer: 'Gary Hill',
+  },
+  {
+    clues: [
       'I helped move pauci-immune necrotizing and crescentic GN from pattern recognition toward pathogenesis.',
       'UNC Chapel Hill is my academic home.',
       'In 1997, the Renal Pathology Society gave me the first Jacob Churg Award.',
@@ -276,6 +286,14 @@ export default function WhoAmI() {
               style={{ background: '#fb27e8' }}
             >
               Show answer
+            </button>
+          )}
+          {!showAnswer && (
+            <button
+              onClick={nextPathologist}
+              className="py-2.5 px-3 rounded-lg text-xs font-medium border border-gray-300 text-gray-400 hover:text-gray-500 hover:border-gray-400 transition-colors"
+            >
+              Skip
             </button>
           )}
           {showAnswer && (
