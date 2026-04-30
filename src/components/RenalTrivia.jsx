@@ -162,6 +162,16 @@ const QUESTIONS = [
     correct: 'C',
   },
   {
+    text: 'In which year did the Renal Pathology Society have its first all-female Board of Directors?',
+    options: [
+      { letter: 'A', text: '1998' },
+      { letter: 'B', text: '2005' },
+      { letter: 'C', text: '2018' },
+      { letter: 'D', text: '2025' },
+    ],
+    correct: 'D',
+  },
+  {
     text: 'Robert Heptinstall wrote the first edition of his landmark textbook every evening until well past midnight. Where did he do this writing?',
     options: [
       { letter: 'A', text: 'In his office at Johns Hopkins' },
@@ -258,7 +268,7 @@ export default function RenalTrivia() {
       {/* Header */}
       <div className="bg-[#0C447C] px-4 py-3">
         <h2 className="text-white font-bold text-base leading-tight">Renal Path Trivia</h2>
-        <p className="text-white/60 text-xs mt-0.5">Test your knowledge of renal pathology history</p>
+        <p className="text-white/60 text-xs mt-0.5">Test your knowledge of renal pathology history and trivia</p>
       </div>
 
       <div className="p-4 space-y-3">
