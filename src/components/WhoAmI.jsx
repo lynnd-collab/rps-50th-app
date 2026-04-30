@@ -155,6 +155,16 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
+      'I trained with pathologist Deborah Doniach in London specifically to learn how to apply fluorescent techniques to the kidney.',
+      'My first public report of my findings was an oral presentation to the Société de Néphrologie in Paris in the winter of 1968, followed by a published summary less than one page long.',
+      'I worked in the Department of Nephrology headed by Jean Hamburger at the Necker-Enfants Malades Hospital in Paris.',
+      'A disease bears my name, though I was always rather embarrassed about the eponym.',
+      'I first described the most common form of glomerulonephritis worldwide.',
+    ],
+    answer: 'Jean Berger',
+  },
+  {
+    clues: [
       'I grew up in Texas, but my French improved dramatically in college after I acquired a persuasive reason to learn the language: a French girlfriend.',
       'As a young pathologist, I was named "best new investigator" in pathology and honeymooned in Cambridge, England after being invited there.',
       'By 1978, only ten years after graduating from Johns Hopkins School of Medicine, I had become Chief of Pathology at Johns Hopkins Bayview Medical Center.',
