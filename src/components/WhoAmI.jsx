@@ -155,6 +155,16 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
+      'I was born in Brooklyn and did not so much plan a career in renal pathology as stumble into it, then turn it into a lifelong passion.',
+      'I was largely self-taught in kidney pathology, with important help from masters such as Jacob Churg, Robert Heptinstall, and Conrad Pirani.',
+      'In the early 1970s at Harbor-UCLA, I built one of the country\'s first comprehensive renal biopsy services, combining light microscopy, immunofluorescence, electron microscopy, and the patient\'s clinical story.',
+      'I was so committed to kidney biopsies that my personalized license plate read: "LM IF EM."',
+      'I was president of the Renal Pathology Society, received the Jacob Churg Award, and made contributions to HIV-associated nephropathy, membranous nephropathy mechanisms, and renal fibrosis.',
+    ],
+    answer: 'Arthur Cohen',
+  },
+  {
+    clues: [
       'I trained first in pathology at Hammersmith Hospital in London, but after three years decided I preferred clinical medicine.',
       'My habit of visiting the autopsy room helped me notice unusual renal papillary necrosis, a finding that helped lead me toward the study of analgesic nephropathy.',
       'I became a leading nephrologist in Melbourne, where I helped establish the renal transplant programme at the Royal Melbourne Hospital.',
