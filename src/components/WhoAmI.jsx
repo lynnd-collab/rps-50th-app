@@ -155,6 +155,16 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
+      'I trained first in pathology at Hammersmith Hospital in London, but after three years decided I preferred clinical medicine.',
+      'My habit of visiting the autopsy room helped me notice unusual renal papillary necrosis, a finding that helped lead me toward the study of analgesic nephropathy.',
+      'I became a leading nephrologist in Melbourne, where I helped establish the renal transplant programme at the Royal Melbourne Hospital.',
+      'My work helped establish the link between compound analgesics and kidney damage, leading to major public health changes in Australia.',
+      'I became professor of medicine at the University of Melbourne and was a pioneer for women in medicine in Australia, where married female doctors were initially barred from hospital and university employment.',
+    ],
+    answer: 'Priscilla Kincaid-Smith',
+  },
+  {
+    clues: [
       'I trained with pathologist Deborah Doniach in London specifically to learn how to apply fluorescent techniques to the kidney.',
       'My first public report of my findings was an oral presentation to the Société de Néphrologie in Paris in the winter of 1968, followed by a published summary less than one page long.',
       'I worked in the Department of Nephrology headed by Jean Hamburger at the Necker-Enfants Malades Hospital in Paris.',
