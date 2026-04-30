@@ -5,6 +5,7 @@ import Confetti from './components/Confetti'
 import History from './tabs/History'
 import Celebrate from './tabs/Celebrate'
 import Awards from './tabs/Awards'
+import Quiz from './tabs/Quiz'
 import About from './tabs/About'
 
 export default function App() {
@@ -25,7 +26,7 @@ export default function App() {
 
   function handleTabChange(tab) {
     setActiveTab(tab)
-    if (tab === 'Celebrate' || tab === 'Awards' || tab === 'History') {
+    if (tab === 'Celebrate' || tab === 'Awards' || tab === 'History' || tab === 'Quizzes') {
       setTimeout(triggerConfetti, 500)
     }
   }
@@ -41,6 +42,7 @@ export default function App() {
         {activeTab === 'History' && <History />}
         {activeTab === 'Celebrate' && <Celebrate />}
         {activeTab === 'Awards' && <Awards />}
+        {activeTab === 'Quizzes' && <Quiz />}
         {activeTab === 'About' && <About />}
       </main>
     </div>
