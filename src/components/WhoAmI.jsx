@@ -234,6 +234,16 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
+      'I am an accomplished orchid grower.',
+      'My work has included lupus nephritis, thrombotic microangiopathy, and kidney transplant pathology.',
+      'I have contributed to Banff working groups and renal allograft pathology consensus efforts.',
+      'I trained in renal pathology with Dr. Jacob Churg.',
+      'I am the Chief of Renal Pathology at Weill Cornell Medicine/New York-Presbyterian.',
+    ],
+    answer: 'Surya Seshan',
+  },
+  {
+    clues: [
       'A photograph I took of a lilac-breasted roller appears on the cover of National Geographic\'s Secret Life of Birds (2025).',
       'I was Dr. Robert McCluskey\'s last renal pathology fellow.',
       'My work focuses on kidney transplant pathology, IgG4-related disease, and tubulointerstitial nephritis.',
@@ -282,26 +292,39 @@ export default function WhoAmI() {
   const [cardIndex, setCardIndex] = useState(() => loadSession()?.cardIndex ?? 0)
   const [cluesShown, setCluesShown] = useState(() => loadSession()?.cluesShown ?? 1)
   const [showAnswer, setShowAnswer] = useState(() => loadSession()?.showAnswer ?? false)
+  // Per-card history so Back restores the exact clue state
+  const [cardHistory, setCardHistory] = useState(() => loadSession()?.cardHistory ?? [])
 
   const card = deck[cardIndex]
   const allCluesShown = cluesShown >= card.clues.length
 
   useEffect(() => {
-    saveSession({ deck, cardIndex, cluesShown, showAnswer })
-  }, [deck, cardIndex, cluesShown, showAnswer])
+    saveSession({ deck, cardIndex, cluesShown, showAnswer, cardHistory })
+  }, [deck, cardIndex, cluesShown, showAnswer, cardHistory])
 
   const nextPathologist = useCallback(() => {
+    setCardHistory(h => [...h, { cluesShown, showAnswer }])
     const next = cardIndex + 1
     if (next >= deck.length) {
       clearSession()
       setDeck(shuffle(PATHOLOGISTS))
       setCardIndex(0)
+      setCardHistory([])
     } else {
       setCardIndex(next)
     }
     setCluesShown(1)
     setShowAnswer(false)
-  }, [cardIndex, deck.length])
+  }, [cardIndex, deck.length, cluesShown, showAnswer])
+
+  const prevPathologist = useCallback(() => {
+    if (cardIndex === 0) return
+    const prev = cardHistory[cardHistory.length - 1] ?? { cluesShown: 1, showAnswer: false }
+    setCardHistory(h => h.slice(0, -1))
+    setCardIndex(cardIndex - 1)
+    setCluesShown(prev.cluesShown)
+    setShowAnswer(prev.showAnswer)
+  }, [cardIndex, cardHistory])
 
   return (
     <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
@@ -340,6 +363,19 @@ export default function WhoAmI() {
 
         {/* Action buttons */}
         <div className="flex gap-2 pt-1">
+          {/* Back button — left side, hidden on first card */}
+          {cardIndex > 0 ? (
+            <button
+              onClick={prevPathologist}
+              className="py-2.5 px-3 rounded-lg text-xs font-medium border border-gray-300 text-gray-400 hover:text-gray-500 hover:border-gray-400 transition-colors"
+            >
+              ← Back
+            </button>
+          ) : (
+            <div className="py-2.5 px-3" aria-hidden="true" />
+          )}
+
+          {/* Centre action */}
           {!allCluesShown && !showAnswer && (
             <button
               onClick={() => setCluesShown(n => n + 1)}
@@ -358,14 +394,6 @@ export default function WhoAmI() {
               Show answer
             </button>
           )}
-          {!showAnswer && (
-            <button
-              onClick={nextPathologist}
-              className="py-2.5 px-3 rounded-lg text-xs font-medium border border-gray-300 text-gray-400 hover:text-gray-500 hover:border-gray-400 transition-colors"
-            >
-              Skip
-            </button>
-          )}
           {showAnswer && (
             <button
               onClick={nextPathologist}
@@ -373,6 +401,16 @@ export default function WhoAmI() {
               style={{ background: '#0C447C' }}
             >
               Next pathologist →
+            </button>
+          )}
+
+          {/* Skip button — right side */}
+          {!showAnswer && (
+            <button
+              onClick={nextPathologist}
+              className="py-2.5 px-3 rounded-lg text-xs font-medium border border-gray-300 text-gray-400 hover:text-gray-500 hover:border-gray-400 transition-colors"
+            >
+              Skip
             </button>
           )}
         </div>
