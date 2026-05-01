@@ -234,6 +234,16 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
+      'I am red-green colour-blind, so I rely on sharp-eyed trainees to help spot eosinophils.',
+      'I have made diabetic nephropathy more interesting than people expected.',
+      'My work has been wide-ranging and has included major studies of diabetic nephropathy, kidney transplant pathology, and glomerular disease.',
+      'I have spent much of my career in renal pathology at the University of Washington.',
+      'I served as President of the Renal Pathology Society in 2000 and received the Jacob Churg Award in 2003.',
+    ],
+    answer: 'Charles Alpers',
+  },
+  {
+    clues: [
       'Many of my past trainees affectionately refer to me as "Papá".',
       'I am known for a Socratic, microscope-based approach to teaching renal pathology.',
       'I co-authored Renal Pathophysiology: The Essentials.',
