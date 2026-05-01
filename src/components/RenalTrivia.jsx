@@ -213,6 +213,17 @@ const QUESTIONS = [
     ],
     correct: 'D',
   },
+  {
+    // correct: C
+    text: 'The stain eosin gets its name from the Greek word for what?',
+    options: [
+      { letter: 'A', text: 'Red' },
+      { letter: 'B', text: 'Pink' },
+      { letter: 'C', text: 'Dawn' },
+      { letter: 'D', text: 'Light' },
+    ],
+    correct: 'C',
+  },
 ]
 
 const SESSION_KEY = 'renaltrivia_state'
