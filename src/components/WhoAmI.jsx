@@ -234,6 +234,16 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
+      'Many of my past trainees affectionately refer to me as "Papá."',
+      'I am known for a Socratic, microscope-based approach to teaching renal pathology.',
+      'I co-authored Renal Pathophysiology: The Essentials.',
+      'Originally from Chile, I spent much of my career at Brigham and Women\'s Hospital/Harvard Medical School.',
+      'I received the Robert H. Heptinstall Lifetime Achievement Award from the Renal Pathology Society.',
+    ],
+    answer: 'Helmut Rennke',
+  },
+  {
+    clues: [
       'I am an accomplished orchid grower.',
       'My work has included lupus nephritis, thrombotic microangiopathy, and kidney transplant pathology.',
       'I have contributed to Banff working groups and renal allograft pathology consensus efforts.',
