@@ -1,14 +1,54 @@
 import { useState, useEffect, useCallback } from 'react'
 
 const WORDS = [
-  'GLOMS','EDEMA','LYMPH','LUPUS','MUCIN','CASTS','NODAL',
-  'SCARS','HILUM','HILAR','CRESC','SPIKE','URINE','HILUS',
-  'JONES','CHURG','RENAL','TOXIC','ACUTE','STENT','GRAFT',
-  'SERUM','ORGAN','BLOOD','COLIC','RENIN','HENLE','BANFF',
-  'DONOR','TACRO','TCELL','BCELL','KDIGO','CALYX','FABRY',
-  'HIVAN','DENSE','FOCAL','LIGHT','CHAIN','CYSTS','ADPKD',
-  'ADTKD','RECTA','BRUSH','SINUS','DENSA','STONE','LOOPS',
-  'DUCTS',
+  { word: 'GLOMS', hint: "A renal pathologist's daily count" },
+  { word: 'EDEMA', hint: 'A nephrologist\'s frequent finding when the serum albumin is low' },
+  { word: 'LYMPH', hint: 'A fluid and a cell type' },
+  { word: 'LUPUS', hint: 'Named after an animal' },
+  { word: 'MUCIN', hint: 'A carbohydrate-rich secretion' },
+  { word: 'CASTS', hint: 'Tubular impressions' },
+  { word: 'SCARS', hint: 'The legacy of chronic injury' },
+  { word: 'HILAR', hint: 'Where vessels meet the kidney' },
+  { word: 'SPIKE', hint: 'A defensive structure' },
+  { word: 'URINE', hint: "The kidney's primary output" },
+  { word: 'JONES', hint: 'A stain named for its inventor' },
+  { word: 'CHURG', hint: 'An RPS award namesake' },
+  { word: 'RENAL', hint: 'Something we all love' },
+  { word: 'TOXIC', hint: 'Certain drug effects' },
+  { word: 'ACUTE', hint: 'Clinical presentation' },
+  { word: 'STENT', hint: 'A tubular scaffold for vessels' },
+  { word: 'GRAFT', hint: 'Moved between patients' },
+  { word: 'SERUM', hint: 'Blood component' },
+  { word: 'ORGAN', hint: 'Moved between patients' },
+  { word: 'BLOOD', hint: 'Filtered fluid' },
+  { word: 'COLIC', hint: 'Painful clinical presentation' },
+  { word: 'RENIN', hint: 'Small silver positive dots on LM' },
+  { word: 'HENLE', hint: 'A famous loop' },
+  { word: 'BANFF', hint: 'An Alberta town with pathological significance' },
+  { word: 'DONOR', hint: 'One half of a pair' },
+  { word: 'TACRO', hint: 'A calcineurin inhibitor, informally' },
+  { word: 'TCELL', hint: 'Key player in rejection' },
+  { word: 'KDIGO', hint: 'Global guidelines body' },
+  { word: 'CALYX', hint: 'Collecting structure' },
+  { word: 'FABRY', hint: 'An eponymous disorder' },
+  { word: 'HIVAN', hint: 'An infection-associated condition, abbreviated' },
+  { word: 'DENSE', hint: 'EM appearance' },
+  { word: 'FOCAL', hint: 'Not diffuse' },
+  { word: 'LIGHT', hint: 'Relevant in monoclonal disease' },
+  { word: 'CHAIN', hint: 'A protein component' },
+  { word: 'CYSTS', hint: 'Present in some inherited kidney diseases' },
+  { word: 'ADPKD', hint: 'Inherited kidney disease' },
+  { word: 'ADTKD', hint: 'Inherited kidney disease' },
+  { word: 'RECTA', hint: 'Medullary vessels' },
+  { word: 'BRUSH', hint: 'A cellular border feature' },
+  { word: 'SINUS', hint: 'Contains fat and vessels' },
+  { word: 'DENSA', hint: 'A tubular sodium sensor' },
+  { word: 'STONE', hint: 'Excess dietary oxalate can lead to this' },
+  { word: 'LOOPS', hint: 'The medulla has many' },
+  { word: 'DUCTS', hint: 'Final tubular segment' },
+  { word: 'STAIN', hint: "A pathologist's essential tool" },
+  { word: 'LUMEN', hint: 'Inner space' },
+  { word: 'EOSIN', hint: 'Named from the Greek word for dawn' },
 ]
 
 const KEYBOARD_ROWS = [
@@ -21,7 +61,7 @@ function getTodayKey() {
   return new Date().toISOString().slice(0, 10)
 }
 
-function getDailyWord() {
+function getDailyEntry() {
   const epoch = Math.floor(Date.now() / 86400000)
   return WORDS[epoch % WORDS.length]
 }
@@ -82,7 +122,7 @@ const KEY_COLORS = {
 }
 
 export default function NephroWordle() {
-  const target = getDailyWord()
+  const { word: target, hint } = getDailyEntry()
   const saved = loadState()
 
   const [guesses, setGuesses] = useState(saved?.guesses ?? [])
@@ -166,7 +206,7 @@ export default function NephroWordle() {
 
       <div className="p-4 space-y-4">
         {/* Hint */}
-        <p className="text-xs text-center text-gray-400 italic">Today's word is a renal pathology term</p>
+        <p className="text-xs text-center text-gray-400 italic">Hint: {hint}</p>
 
         {/* Toast message */}
         <div className="h-6 flex items-center justify-center">
