@@ -69,7 +69,7 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
-      'After undergraduate studies at MIT, I trained at Harvard Medical School and Massachusetts General Hospital, where I spent my career.',
+      'After majoring in Humanities (course 21B) at MIT, I trained at Harvard Medical School and Massachusetts General Hospital, where I spent my career.',
       'I was a key figure in developing criteria for transplant rejection diagnosis.',
       'At a Banff meeting I famously said, "Let\'s not codify our ignorance."',
       'I received the Jacob Churg Award in 1998 and the Heptinstall Lifetime Achievement Award in 2011.',
