@@ -210,7 +210,7 @@ export default function NephroWordle() {
 
       <div className="p-4 space-y-4">
         {/* Hint */}
-        <p className="text-xs text-center text-gray-400 italic">Hint: {hint}</p>
+        <p className="text-sm text-center text-gray-400 italic">Hint: {hint}</p>
 
         {/* Toast message */}
         <div className="h-6 flex items-center justify-center">
