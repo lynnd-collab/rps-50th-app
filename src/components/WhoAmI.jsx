@@ -226,8 +226,8 @@ const PATHOLOGISTS = [
     clues: [
       'In my office, I have an image of a zebra composed of electron microscopy "zebra bodies."',
       'I am a renal pathologist at Cedars-Sinai Medical Center.',
-      'I have published extensively in lupus nephritis and participated in work on ISN/RPS lupus nephritis classification and activity/chronicity indices.',
-      'My work also includes tubulointerstitial nephritis, including medication-induced interstitial nephritis.',
+      'I am the Deputy Editor of the journal Glomerular Diseases.',
+      'My work also includes tubulointerstitial nephritis, including chronic interstitial nephritis in agricultural communities.',
       'I have contributed to large renal biopsy studies from Cedars-Sinai, including long-term trends in biopsy-proven kidney disease diagnoses.',
     ],
     answer: 'Cynthia Nast',
