@@ -1,4 +1,4 @@
-const tabs = ['History', 'Celebrate', 'Awards', 'Quizzes', 'About']
+const tabs = ['History', 'Celebrate', 'Awards', 'Games', 'About']
 
 export default function TabBar({ active, onChange }) {
   return (
