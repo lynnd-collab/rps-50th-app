@@ -224,7 +224,7 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
-      'In my office, I have an image of a zebra composed of electron microscopy "zebra bodies."',
+      'In my office, I have an image of a zebra composed of electron microscopy "zebra bodies".',
       'I am the Deputy Editor of the journal Glomerular Diseases.',
       'I am a renal pathologist at Cedars-Sinai Medical Center.',
       'My work includes tubulointerstitial nephritis, including chronic interstitial nephritis in agricultural communities.',
@@ -234,7 +234,7 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
-      'Many of my past trainees affectionately refer to me as "Papá."',
+      'Many of my past trainees affectionately refer to me as "Papá".',
       'I am known for a Socratic, microscope-based approach to teaching renal pathology.',
       'I co-authored Renal Pathophysiology: The Essentials.',
       'Originally from Chile, I spent much of my career at Brigham and Women\'s Hospital/Harvard Medical School.',
