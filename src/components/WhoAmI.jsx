@@ -234,6 +234,16 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
+      'My contributions to understanding BK virus nephropathy helped transform how transplant physicians monitor and manage kidney recipients.',
+      'I trained at the All India Institute of Medical Sciences in New Delhi before making my career in the United States.',
+      'My research interests include BK virus nephropathy and T cell mediated rejection.',
+      'I have spent my entire academic career at the University of Pittsburgh.',
+      'I received the Jacob Churg Award in 2016 and the Robert H. Heptinstall Lifetime Achievement Award in 2024.',
+    ],
+    answer: 'Parmjeet Randhawa',
+  },
+  {
+    clues: [
       'I am red-green colour-blind, so I rely on sharp-eyed trainees to help spot eosinophils.',
       'I have made diabetic nephropathy more interesting than people expected.',
       'My work has been wide-ranging and has included major studies of diabetic nephropathy, kidney transplant pathology, and glomerular disease.',
