@@ -155,6 +155,16 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
+      'I trained at Indiana University and later held faculty positions at the University of Iowa, UAMS, and LSU Health Sciences Center in Shreveport.',
+      'My work has bridged renal pathology and genitourinary pathology, including major contributions to renal cystic and developmental diseases.',
+      'I authored the Atlas of Medical Renal Pathology, combining renal anatomy, gross pathology, histology, and diagnostic renal pathology.',
+      'Outside of work, I draw detailed scenes of landscapes, historic log cabins, and old barns.',
+      'My career has included academic leadership and diagnostic consultation, including later work with Arkana Laboratories.',
+    ],
+    answer: 'Stephen M. Bonsib',
+  },
+  {
+    clues: [
       'I was born in Brooklyn and did not so much plan a career in renal pathology as stumble into it, then turned it into a lifelong passion.',
       'I was largely self-taught in kidney pathology, with important help from masters such as Jacob Churg, Robert Heptinstall, and Conrad Pirani.',
       'In the early 1970s at Harbor-UCLA, I built one of the country\'s first comprehensive renal biopsy services, combining light microscopy, immunofluorescence, electron microscopy, and the patient\'s clinical story.',
