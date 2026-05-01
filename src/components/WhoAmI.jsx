@@ -212,6 +212,16 @@ const PATHOLOGISTS = [
     ],
     answer: 'J. Charles Jennette',
   },
+  {
+    clues: [
+      'A photograph I took of a lilac-breasted roller appears on the cover of National Geographic\'s Secret Life of Birds (2025).',
+      'I was Dr. Robert McCluskey\'s last renal pathology fellow.',
+      'My work focuses on kidney transplant pathology, IgG4-related disease, and tubulointerstitial nephritis.',
+      'I founded and directed an ACGME-accredited renal pathology fellowship program for 13 years at Mayo Clinic.',
+      'I created this anniversary app, including the quizzes you are using now.',
+    ],
+    answer: 'Lynn Cornell',
+  },
 ]
 
 function shuffle(arr) {
