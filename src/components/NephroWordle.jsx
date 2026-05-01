@@ -135,6 +135,22 @@ export default function NephroWordle() {
   const [message, setMessage] = useState('')
   const [shake, setShake] = useState(false)
 
+  // Reset all state when a new day is detected (e.g. tab left open overnight)
+  useEffect(() => {
+    function onVisible() {
+      if (document.visibilityState !== 'visible') return
+      if (!loadState()) {
+        setGuesses([])
+        setCurrent('')
+        setStatus('playing')
+        setMessage('')
+        setShake(false)
+      }
+    }
+    document.addEventListener('visibilitychange', onVisible)
+    return () => document.removeEventListener('visibilitychange', onVisible)
+  }, [])
+
   useEffect(() => { saveState({ guesses, current, status }) }, [guesses, current, status])
 
   useEffect(() => {
