@@ -94,18 +94,22 @@ function getKeyColors(guesses, target) {
   return colors
 }
 
-const SESSION_PREFIX = 'nephrowordle_'
+const SESSION_KEY = 'nephrowordle_state'
 
 function loadState() {
   try {
-    const raw = sessionStorage.getItem(SESSION_PREFIX + getTodayKey())
-    if (raw) return JSON.parse(raw)
+    const raw = sessionStorage.getItem(SESSION_KEY)
+    if (raw) {
+      const saved = JSON.parse(raw)
+      if (saved.date === getTodayKey()) return saved
+      sessionStorage.removeItem(SESSION_KEY)
+    }
   } catch {}
   return null
 }
 
 function saveState(state) {
-  try { sessionStorage.setItem(SESSION_PREFIX + getTodayKey(), JSON.stringify(state)) } catch {}
+  try { sessionStorage.setItem(SESSION_KEY, JSON.stringify({ ...state, date: getTodayKey() })) } catch {}
 }
 
 const TILE_COLORS = {
