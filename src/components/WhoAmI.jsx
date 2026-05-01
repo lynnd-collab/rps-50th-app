@@ -214,6 +214,26 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
+      'I proposed a histologic classification system for IgA nephropathy in 1997.',
+      'My work has focused on glomerular diseases, particularly IgA nephropathy, as well as kidney transplant pathology.',
+      'I have been deeply involved in the Banff classification and kidney transplant pathology consensus efforts.',
+      'I am a renal pathologist at Cedars-Sinai Medical Center.',
+      'I served as President of the Renal Pathology Society and received both the Jacob Churg Award and the Robert H. Heptinstall Lifetime Achievement Award.',
+    ],
+    answer: 'Mark Haas',
+  },
+  {
+    clues: [
+      'In my office, I have an image of a zebra composed of electron microscopy "zebra bodies."',
+      'I am a renal pathologist at Cedars-Sinai Medical Center.',
+      'I have published extensively in lupus nephritis and participated in work on ISN/RPS lupus nephritis classification and activity/chronicity indices.',
+      'My work also includes tubulointerstitial nephritis, including medication-induced interstitial nephritis.',
+      'I have contributed to large renal biopsy studies from Cedars-Sinai, including long-term trends in biopsy-proven kidney disease diagnoses.',
+    ],
+    answer: 'Cynthia Nast',
+  },
+  {
+    clues: [
       'A photograph I took of a lilac-breasted roller appears on the cover of National Geographic\'s Secret Life of Birds (2025).',
       'I was Dr. Robert McCluskey\'s last renal pathology fellow.',
       'My work focuses on kidney transplant pathology, IgG4-related disease, and tubulointerstitial nephritis.',
