@@ -49,6 +49,7 @@ const WORDS = [
   { word: 'STAIN', hint: "A pathologist's essential tool" },
   { word: 'LUMEN', hint: 'Inner space' },
   { word: 'EOSIN', hint: 'Named from the Greek word for dawn' },
+  { word: 'FIFTY', hint: 'RPS turns this in 2027' },
 ]
 
 const KEYBOARD_ROWS = [
