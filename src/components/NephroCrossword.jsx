@@ -17,7 +17,7 @@ const data = {
     '22': { clue: 'Cells whose dysfunction can lead to diabetic nephropathy', answer: 'ISLET', row: 5, col: 3 },
     '23': { clue: 'Risk for symptoms in collagenopathies', answer: 'SEX', row: 5, col: 9 },
     '25': { clue: 'Expression around Banff', answer: 'EH', row: 6, col: 7 },
-    '27': { clue: 'Mountain town', answer: 'BANFF', row: 7, col: 0 },
+    '27': { clue: 'Mountain town, site of skiing and schema', answer: 'BANFF', row: 7, col: 0 },
     '32': { clue: 'Associated with IgA nephropathy and interstitial nephritis', answer: 'CROHNS', row: 7, col: 6 },
     '34': { clue: 'How sections are cut for EM', answer: 'ULTRATHIN', row: 8, col: 0 },
     '35': { clue: 'Status post, in clinical notes', answer: 'SP', row: 8, col: 10 },
