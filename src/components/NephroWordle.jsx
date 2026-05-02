@@ -45,7 +45,7 @@ const WORDS = [
   { word: 'DENSA', hint: 'A tubular sodium sensor' },
   { word: 'STONE', hint: 'Excess dietary oxalate can lead to this' },
   { word: 'LOOPS', hint: 'The medulla has many' },
-  { word: 'DUCTS', hint: 'Final tubular segment' },
+  { word: 'DUCTS', hint: 'Tubular segments' },
   { word: 'STAIN', hint: "A pathologist's essential tool" },
   { word: 'LUMEN', hint: 'Inner space' },
   { word: 'EOSIN', hint: 'Named from the Greek word for dawn' },
