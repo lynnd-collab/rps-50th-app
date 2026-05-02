@@ -58,12 +58,15 @@ const KEYBOARD_ROWS = [
   ['ENTER','Z','X','C','V','B','N','M','⌫'],
 ]
 
+// MDT is UTC-6; subtracting this offset makes the day roll over at midnight MDT
+const MDT_OFFSET_MS = 6 * 60 * 60 * 1000
+
 function getTodayKey() {
-  return new Date().toISOString().slice(0, 10)
+  return new Date(Date.now() - MDT_OFFSET_MS).toISOString().slice(0, 10)
 }
 
 function getDailyEntry() {
-  const epoch = Math.floor(Date.now() / 86400000)
+  const epoch = Math.floor((Date.now() - MDT_OFFSET_MS) / 86400000)
   return WORDS[epoch % WORDS.length]
 }
 
