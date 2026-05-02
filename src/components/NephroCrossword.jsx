@@ -9,7 +9,7 @@ const data = {
     '10': { clue: 'Title of renal pathologists', answer: 'DR', row: 2, col: 2 },
     '11': { clue: 'Congo __', answer: 'RED', row: 2, col: 5 },
     '12': { clue: 'Lactate-albumin ratio, abbrev.', answer: 'LAR', row: 2, col: 9 },
-    '13': { clue: 'Procedure, for short', answer: 'OP', row: 3, col: 0 },
+    '13': { clue: 'post__ day, how long after kidney transplant', answer: 'OP', row: 3, col: 0 },
     '15': { clue: 'Eureka moment, or amyloid type', answer: 'AH', row: 3, col: 3 },
     '17': { clue: 'Interstitial amorphous material, often', answer: 'ALECT', row: 3, col: 7 },
     '18': { clue: 'IF staining pattern', answer: 'GRANULAR', row: 4, col: 0 },
