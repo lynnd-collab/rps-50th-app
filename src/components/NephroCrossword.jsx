@@ -22,7 +22,7 @@ const data = {
     '34': { clue: 'How sections are cut for EM', answer: 'ULTRATHIN', row: 8, col: 0 },
     '35': { clue: 'Status post, in clinical notes', answer: 'SP', row: 8, col: 10 },
     '36': { clue: '--nail, cells seen in chronic lithium toxicity', answer: 'HOB', row: 9, col: 2 },
-    '37': { clue: 'Each finding on a pathology checklist', answer: 'ITEM', row: 9, col: 6 },
+    '37': { clue: 'Line on a synoptic report', answer: 'ITEM', row: 9, col: 6 },
     '39': { clue: 'Bright green tool used by renal pathologists', answer: 'IF', row: 10, col: 0 },
     '41': { clue: 'Recipient needs this post-transplant', answer: 'TLC', row: 10, col: 3 },
     '43': { clue: 'Exclamation upon receiving a difficult case', answer: 'ACK', row: 10, col: 9 },
