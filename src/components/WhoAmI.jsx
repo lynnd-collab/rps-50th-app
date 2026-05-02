@@ -235,7 +235,7 @@ const PATHOLOGISTS = [
   {
     clues: [
       'I helped establish the link between phenacetin use and analgesic nephropathy, contributing to its eventual disappearance.',
-      'I built Basel into an international center for nephropathology training.',
+      'I built Basel into an international centre for nephropathology training.',
       'My work included early descriptions of cyclosporine nephrotoxicity and biopsy-based monitoring of transplant patients.',
       'In retirement, I created and maintained Nephrotox, a database linking drugs, renal side effects, and morphologic patterns.',
     ],
