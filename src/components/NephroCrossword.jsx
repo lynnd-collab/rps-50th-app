@@ -3,7 +3,7 @@ import Crossword from '@jaredreisinger/react-crossword'
 
 const data = {
   across: {
-    '1':  { clue: 'Activated in MPGN', answer: 'COMPLEMENT', row: 0, col: 0 },
+    '1':  { clue: 'Not flattery; activated in MPGN', answer: 'COMPLEMENT', row: 0, col: 0 },
     '8':  { clue: 'Pharma company behind early neph symposium', answer: 'CIBA', row: 1, col: 2 },
     '9':  { clue: 'Modus operandi, abbrev.', answer: 'MO', row: 1, col: 10 },
     '10': { clue: 'Title of renal pathologists', answer: 'DR', row: 2, col: 2 },
