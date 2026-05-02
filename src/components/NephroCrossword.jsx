@@ -12,7 +12,7 @@ const data = {
     '13': { clue: 'Procedure, for short', answer: 'OP', row: 3, col: 0 },
     '15': { clue: 'Eureka moment, or amyloid type', answer: 'AH', row: 3, col: 3 },
     '17': { clue: 'Interstitial amorphous material, often', answer: 'ALECT', row: 3, col: 7 },
-    '18': { clue: 'Cast type', answer: 'GRANULAR', row: 4, col: 0 },
+    '18': { clue: 'IF staining pattern', answer: 'GRANULAR', row: 4, col: 0 },
     '21': { clue: 'Late onset, abbrev.', answer: 'LO', row: 5, col: 0 },
     '22': { clue: 'Cells whose dysfunction can lead to diabetic nephropathy', answer: 'ISLET', row: 5, col: 3 },
     '23': { clue: 'Risk for symptoms in collagenopathies', answer: 'SEX', row: 5, col: 9 },
