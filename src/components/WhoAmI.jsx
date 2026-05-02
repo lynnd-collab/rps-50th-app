@@ -234,6 +234,15 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
+      'I helped establish the link between phenacetin use and analgesic nephropathy, contributing to its eventual disappearance.',
+      'I built Basel into an international center for nephropathology training.',
+      'My work included early descriptions of cyclosporine nephrotoxicity and biopsy-based monitoring of transplant patients.',
+      'In retirement, I created and maintained Nephrotox, a database linking drugs, renal side effects, and morphologic patterns.',
+    ],
+    answer: 'Michael J. Mihatsch',
+  },
+  {
+    clues: [
       'My contributions to understanding BK virus nephropathy helped transform how transplant physicians monitor and manage kidney recipients.',
       'I trained at the All India Institute of Medical Sciences in New Delhi before making my career in the United States.',
       'My research interests include BK virus nephropathy and T cell mediated rejection.',
