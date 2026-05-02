@@ -31,7 +31,7 @@ const data = {
     '47': { clue: 'What we do down the microscope', answer: 'STARE', row: 11, col: 7 },
   },
   down: {
-    '1':  { clue: 'Baby it\'s cold outside', answer: 'CRYOGLOBULIN', row: 0, col: 0 },
+    '1':  { clue: 'Baby it\'s cold inside', answer: 'CRYOGLOBULIN', row: 0, col: 0 },
     '2':  { clue: 'Nephrotic syndrome cause, abbrev.', answer: 'MCD', row: 0, col: 2 },
     '3':  { clue: 'Early EM pioneer', answer: 'PIRANI', row: 0, col: 3 },
     '4':  { clue: 'Used in bacterial cultures, abbrev.', answer: 'LB', row: 0, col: 4 },
