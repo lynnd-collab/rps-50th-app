@@ -50,7 +50,7 @@ const data = {
     '29': { clue: 'To the __ degree, as in maximum diagnostic detail', answer: 'NTH', row: 7, col: 2 },
     '30': { clue: 'Nephrotic syndrome urine', answer: 'FROTH', row: 7, col: 3 },
     '31': { clue: 'Story passed down from renal path elders', answer: 'FABLE', row: 7, col: 4 },
-    '32': { clue: '--squared, test for small sample sizes', answer: 'CHI', row: 7, col: 6 },
+    '32': { clue: '-- squared', answer: 'CHI', row: 7, col: 6 },
     '33': { clue: 'GBM feature best seen on Jones silver', answer: 'SPIKE', row: 7, col: 11 },
     '38': { clue: 'Macroaggregated albumin, abbrev.', answer: 'MAA', row: 9, col: 9 },
     '40': { clue: 'Rare autosomal dominant glomerulopathy with focal fibrillary deposits, abbrev.', answer: 'FN', row: 10, col: 1 },
