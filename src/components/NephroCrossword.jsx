@@ -62,12 +62,12 @@ const data = {
 export default function NephroCrossword() {
   const ref = useRef()
   const [solved, setSolved] = useState(false)
-  const [checked, setChecked] = useState(false)
+  const [checkMsg, setCheckMsg] = useState('')
 
   const checkAnswers = useCallback(() => {
-    console.log('NephroCrossword ref:', ref.current)
-    console.log('Available methods:', ref.current ? Object.keys(ref.current) : 'ref is null')
-    setChecked(true)
+    const correct = ref.current?.isCrosswordCorrect()
+    setCheckMsg(correct ? 'All correct! 🎉' : 'Not quite — keep going!')
+    setTimeout(() => setCheckMsg(''), 2500)
   }, [])
 
   return (
@@ -84,29 +84,28 @@ export default function NephroCrossword() {
           </div>
         )}
 
-        <style>{`
-          .crossword-checked .guess-text-incorrect { fill: #dc2626; }
-        `}</style>
+        <Crossword
+          ref={ref}
+          data={data}
+          useStorage
+          storageKey="nephrocrossword_v1"
+          onCrosswordCorrect={(correct) => { if (correct) setSolved(true) }}
+          theme={{
+            gridBackground: '#f9fafb',
+            cellBackground: '#ffffff',
+            cellBorder: '#d1d5db',
+            textColor: '#111827',
+            numberColor: '#6b7280',
+            focusBackground: '#dbeafe',
+            highlightBackground: '#eff6ff',
+          }}
+        />
 
-        <div className={checked ? 'crossword-checked' : ''}>
-          <Crossword
-            ref={ref}
-            data={data}
-            useStorage
-            storageKey="nephrocrossword_v1"
-            onCellChange={() => setChecked(false)}
-            onCrosswordCorrect={(correct) => { if (correct) { setSolved(true); setChecked(false) } }}
-            theme={{
-              gridBackground: '#f9fafb',
-              cellBackground: '#ffffff',
-              cellBorder: '#d1d5db',
-              textColor: '#111827',
-              numberColor: '#6b7280',
-              focusBackground: '#dbeafe',
-              highlightBackground: '#eff6ff',
-            }}
-          />
-        </div>
+        {checkMsg && (
+          <div className={`text-center py-2 rounded-lg text-sm font-semibold ${checkMsg.startsWith('All') ? 'bg-green-50 border border-green-200 text-green-700' : 'bg-amber-50 border border-amber-200 text-amber-700'}`}>
+            {checkMsg}
+          </div>
+        )}
 
         <div className="flex justify-between">
           <button
@@ -116,7 +115,7 @@ export default function NephroCrossword() {
             Check answers
           </button>
           <button
-            onClick={() => { ref.current?.reset(); setSolved(false); setChecked(false) }}
+            onClick={() => { ref.current?.reset(); setSolved(false); setCheckMsg('') }}
             className="text-xs text-gray-400 hover:text-gray-600 border border-gray-200 hover:border-gray-400 rounded-lg px-3 py-1.5 transition-colors"
           >
             Reset
