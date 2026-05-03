@@ -92,6 +92,7 @@ export default function NephroCrossword() {
             data={data}
             useStorage
             storageKey="nephrocrossword_v1"
+            onCellChange={() => setChecked(false)}
             onCrosswordCorrect={(correct) => { if (correct) { setSolved(true); setChecked(false) } }}
             theme={{
               gridBackground: '#f9fafb',
