@@ -59,16 +59,54 @@ const data = {
   },
 }
 
+// Build a flat map of { "row-col": correctLetter } from puzzle data
+function buildAnswerMap() {
+  const map = {}
+  for (const info of Object.values(data.across)) {
+    for (let i = 0; i < info.answer.length; i++)
+      map[`${info.row}-${info.col + i}`] = info.answer[i]
+  }
+  for (const info of Object.values(data.down)) {
+    for (let i = 0; i < info.answer.length; i++)
+      map[`${info.row + i}-${info.col}`] = info.answer[i]
+  }
+  return map
+}
+
+const ANSWER_MAP = buildAnswerMap()
+
 export default function NephroCrossword() {
   const ref = useRef()
   const [solved, setSolved] = useState(false)
   const [checkMsg, setCheckMsg] = useState('')
+  const [guesses, setGuesses] = useState({})
+
+  const handleCellChange = useCallback((row, col, char) => {
+    setGuesses(prev => ({ ...prev, [`${row}-${col}`]: char }))
+  }, [])
 
   const checkAnswers = useCallback(() => {
-    const correct = ref.current?.isCrosswordCorrect()
-    setCheckMsg(correct ? 'All correct! 🎉' : 'Not quite — keep going!')
-    setTimeout(() => setCheckMsg(''), 2500)
-  }, [])
+    let hasIncorrect = false
+    let hasEmpty = false
+    for (const [key, correct] of Object.entries(ANSWER_MAP)) {
+      const guess = guesses[key]
+      if (!guess) hasEmpty = true
+      else if (guess !== correct) hasIncorrect = true
+    }
+    let msg, style
+    if (hasIncorrect) {
+      msg = 'Some letters are incorrect'
+      style = 'incorrect'
+    } else if (hasEmpty) {
+      msg = 'Looking good so far — keep going!'
+      style = 'incomplete'
+    } else {
+      msg = 'All correct! 🎉'
+      style = 'correct'
+    }
+    setCheckMsg({ text: msg, style })
+    setTimeout(() => setCheckMsg(''), 3000)
+  }, [guesses])
 
   return (
     <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
@@ -90,6 +128,7 @@ export default function NephroCrossword() {
           useStorage
           storageKey="nephrocrossword_v1"
           onCrosswordCorrect={(correct) => { if (correct) setSolved(true) }}
+          onCellChange={handleCellChange}
           theme={{
             gridBackground: '#f9fafb',
             cellBackground: '#ffffff',
@@ -102,8 +141,12 @@ export default function NephroCrossword() {
         />
 
         {checkMsg && (
-          <div className={`text-center py-2 rounded-lg text-sm font-semibold ${checkMsg.startsWith('All') ? 'bg-green-50 border border-green-200 text-green-700' : 'bg-amber-50 border border-amber-200 text-amber-700'}`}>
-            {checkMsg}
+          <div className={`text-center py-2 rounded-lg text-sm font-semibold ${
+            checkMsg.style === 'correct'    ? 'bg-green-50 border border-green-200 text-green-700' :
+            checkMsg.style === 'incomplete' ? 'bg-blue-50 border border-blue-200 text-blue-700' :
+                                             'bg-red-50 border border-red-200 text-red-700'
+          }`}>
+            {checkMsg.text}
           </div>
         )}
 
@@ -115,7 +158,7 @@ export default function NephroCrossword() {
             Check answers
           </button>
           <button
-            onClick={() => { ref.current?.reset(); setSolved(false); setCheckMsg('') }}
+            onClick={() => { ref.current?.reset(); setSolved(false); setCheckMsg(''); setGuesses({}) }}
             className="text-xs text-gray-400 hover:text-gray-600 border border-gray-200 hover:border-gray-400 rounded-lg px-3 py-1.5 transition-colors"
           >
             Reset
