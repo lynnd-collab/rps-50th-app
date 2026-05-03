@@ -65,6 +65,8 @@ export default function NephroCrossword() {
   const [checked, setChecked] = useState(false)
 
   const checkAnswers = useCallback(() => {
+    console.log('NephroCrossword ref:', ref.current)
+    console.log('Available methods:', ref.current ? Object.keys(ref.current) : 'ref is null')
     setChecked(true)
   }, [])
 
