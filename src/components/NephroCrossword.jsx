@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useCallback } from 'react'
 import Crossword from '@jaredreisinger/react-crossword'
 
 const data = {
@@ -62,6 +62,13 @@ const data = {
 export default function NephroCrossword() {
   const ref = useRef()
   const [solved, setSolved] = useState(false)
+  const [checkMsg, setCheckMsg] = useState('')
+
+  const checkAnswers = useCallback(() => {
+    const correct = ref.current?.isCrosswordCorrect()
+    setCheckMsg(correct ? 'All correct! 🎉' : 'Not quite — keep going!')
+    setTimeout(() => setCheckMsg(''), 2500)
+  }, [])
 
   return (
     <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
@@ -94,9 +101,21 @@ export default function NephroCrossword() {
           }}
         />
 
-        <div className="flex justify-end">
+        {checkMsg && (
+          <div className={`text-center py-2 rounded-lg text-sm font-semibold ${checkMsg.startsWith('All') ? 'bg-green-50 border border-green-200 text-green-700' : 'bg-amber-50 border border-amber-200 text-amber-700'}`}>
+            {checkMsg}
+          </div>
+        )}
+
+        <div className="flex justify-between">
           <button
-            onClick={() => { ref.current?.reset(); setSolved(false) }}
+            onClick={checkAnswers}
+            className="text-xs font-semibold border border-[#0C447C] text-[#0C447C] hover:bg-[#0C447C] hover:text-white rounded-lg px-3 py-1.5 transition-colors"
+          >
+            Check answers
+          </button>
+          <button
+            onClick={() => { ref.current?.reset(); setSolved(false); setCheckMsg('') }}
             className="text-xs text-gray-400 hover:text-gray-600 border border-gray-200 hover:border-gray-400 rounded-lg px-3 py-1.5 transition-colors"
           >
             Reset
