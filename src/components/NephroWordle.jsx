@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import WORDLE_WORDS from '../wordleWords'
 
 const WORDS = [
   { word: 'GLOMS', hint: "A renal pathologist's daily count" },
@@ -19,9 +20,9 @@ const WORDS = [
   { word: 'STENT', hint: 'A tubular scaffold for vessels' },
   { word: 'GRAFT', hint: 'Moved between patients' },
   { word: 'SERUM', hint: 'Blood component' },
-  { word: 'ORGAN', hint: 'Moved between patients' },
+  { word: 'ORGAN', hint: 'Also something Bach composed for' },
   { word: 'BLOOD', hint: 'Filtered fluid' },
-  { word: 'COLIC', hint: 'Painful clinical presentation' },
+  { word: 'COLIC', hint: "A stone's calling card" },
   { word: 'RENIN', hint: 'Small silver positive dots on LM' },
   { word: 'HENLE', hint: 'A famous loop' },
   { word: 'BANFF', hint: 'An Alberta town with pathological significance' },
@@ -33,12 +34,12 @@ const WORDS = [
   { word: 'FABRY', hint: 'An eponymous disorder' },
   { word: 'HIVAN', hint: 'An infection-associated condition, abbreviated' },
   { word: 'DENSE', hint: 'EM appearance' },
-  { word: 'FOCAL', hint: 'Not diffuse' },
+  { word: 'FOCAL', hint: "Segmental's companion" },
   { word: 'LIGHT', hint: 'Relevant in monoclonal disease' },
-  { word: 'CHAIN', hint: 'A protein component' },
+  { word: 'CHAIN', hint: 'Not the weakest link' },
   { word: 'CYSTS', hint: 'Present in some inherited kidney diseases' },
   { word: 'ADPKD', hint: 'Inherited kidney disease' },
-  { word: 'ADTKD', hint: 'Inherited kidney disease' },
+  { word: 'ADTKD', hint: 'UMOD and MUC1 are among its culprits' },
   { word: 'RECTA', hint: 'Medullary vessels' },
   { word: 'BRUSH', hint: 'A cellular border feature' },
   { word: 'SINUS', hint: 'Contains fat and vessels' },
@@ -50,7 +51,14 @@ const WORDS = [
   { word: 'LUMEN', hint: 'Inner space' },
   { word: 'EOSIN', hint: 'Named from the Greek word for dawn' },
   { word: 'FIFTY', hint: 'RPS turns this in 2027' },
+  { word: 'AGNES', hint: 'Launched the annual ASN renal pathology precourse' },
+  { word: 'HEPPY', hint: 'Worked on a landmark textbook in an attic every night past midnight' },
+  { word: 'MICRO', hint: "A pathologist's preferred scale" },
+  { word: 'GIANT', hint: 'Describes certain cells and certain problems' },
+  { word: 'SHUNT', hint: 'A bypass with renal consequences' },
 ]
+
+const ANSWER_WORDS = new Set(WORDS.map(e => e.word))
 
 const KEYBOARD_ROWS = [
   ['Q','W','E','R','T','Y','U','I','O','P'],
@@ -171,6 +179,7 @@ export default function NephroWordle() {
 
   const submitGuess = useCallback(() => {
     if (current.length < 5) { flash('Not enough letters'); return }
+    if (!ANSWER_WORDS.has(current) && !WORDLE_WORDS.has(current)) { flash('Not a valid word'); return }
     const newGuesses = [...guesses, current]
     setGuesses(newGuesses)
     setCurrent('')
