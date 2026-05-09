@@ -9,7 +9,7 @@ const WORDS = [
   { word: 'MUCIN', hint: 'A carbohydrate-rich secretion' },
   { word: 'CASTS', hint: 'Tubular impressions' },
   { word: 'SCARS', hint: 'The legacy of chronic injury' },
-  { word: 'HILAR', hint: 'Where vessels meet the kidney' },
+  { word: 'HILUM', hint: 'Where vessels meet the kidney' },
   { word: 'SPIKE', hint: 'A defensive structure' },
   { word: 'URINE', hint: "The kidney's primary output" },
   { word: 'JONES', hint: 'A stain named for its inventor' },
