@@ -1,6 +1,7 @@
 export const timeline = [
   { year: 1666, milestone: false, text: 'Marcello Malpighi first describes the microanatomy of the renal glomerulus using the newly developed microscope, founding the science of renal histology.' },
   { year: 1827, milestone: false, text: 'Richard Bright describes clinical renal syndromes and correlates them with kidney pathology, laying the foundation for what would become nephrology.' },
+  { year: 1854, milestone: false, text: 'The introduction of aniline dyes makes tissue staining possible for the first time, opening the door to modern histopathology.' },
   { year: 1914, milestone: false, text: 'Franz Volhard and Theodor Fahr publish the first systematic histopathology classification of renal disease, establishing pathology as central to understanding kidney disorders.' },
   { year: 1951, milestone: true, text: 'Iversen and Brun perform the first published percutaneous kidney biopsies, launching the modern era of renal pathology.' },
   { year: 1955, milestone: false, text: 'Immunofluorescence microscopy first applied to renal tissue by Mellors, allowing identification of immune deposits in glomerular disease for the first time. Robert McCluskey and Gloria Gallo at NYU were pioneers in its application to human kidney biopsies.' },
