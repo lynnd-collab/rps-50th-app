@@ -56,7 +56,7 @@ const QUESTIONS = [
   },
   {
     // correct: A
-    text: 'The first Banff Conference on Allograft Pathology was booked on which holiday?',
+    text: 'The venue for the first Banff Conference on Allograft Pathology was booked on which holiday?',
     options: [
       { letter: 'A', text: 'Easter Sunday' },
       { letter: 'B', text: 'Christmas Day' },
