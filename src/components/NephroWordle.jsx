@@ -1,5 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
-import WORDLE_WORDS from '../wordleWords'
+import { useState, useEffect, useCallback, useRef } from 'react'
 
 const WORDS = [
   { word: 'GLOMS', hint: "A renal pathologist's daily count" },
@@ -59,6 +58,9 @@ const WORDS = [
 ]
 
 const ANSWER_WORDS = new Set(WORDS.map(e => e.word))
+
+// Loaded once at component mount from public/wordle-words.txt
+let _validWordsCache = null
 
 const KEYBOARD_ROWS = [
   ['Q','W','E','R','T','Y','U','I','O','P'],
@@ -146,6 +148,17 @@ export default function NephroWordle() {
   const [status, setStatus] = useState(saved?.status ?? 'playing')
   const [message, setMessage] = useState('')
   const [shake, setShake] = useState(false)
+  const validWordsRef = useRef(_validWordsCache)
+
+  useEffect(() => {
+    if (_validWordsCache) { validWordsRef.current = _validWordsCache; return }
+    fetch('/wordle-words.txt')
+      .then(r => r.text())
+      .then(text => {
+        _validWordsCache = new Set(text.trim().split('\n').map(w => w.trim().toUpperCase()))
+        validWordsRef.current = _validWordsCache
+      })
+  }, [])
 
   // Reset all state when a new day is detected (e.g. tab left open overnight)
   useEffect(() => {
@@ -179,7 +192,10 @@ export default function NephroWordle() {
 
   const submitGuess = useCallback(() => {
     if (current.length < 5) { flash('Not enough letters'); return }
-    if (!ANSWER_WORDS.has(current) && !WORDLE_WORDS.has(current)) { flash('Not a valid word'); return }
+    const validWords = validWordsRef.current
+    if (validWords && !ANSWER_WORDS.has(current) && !validWords.has(current)) {
+      flash('Not a valid word'); return
+    }
     const newGuesses = [...guesses, current]
     setGuesses(newGuesses)
     setCurrent('')
