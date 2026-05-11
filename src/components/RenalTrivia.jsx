@@ -1,5 +1,14 @@
 import { useState, useEffect, useCallback } from 'react'
 
+const LATIN_TITLES = ['De viscerum structura', 'De pulmonibus', 'De renibus']
+const LATIN_RE = new RegExp(`(${LATIN_TITLES.join('|')})`, 'g')
+function italicise(text) {
+  if (!text) return text
+  return text.split(LATIN_RE).map((part, i) =>
+    LATIN_TITLES.includes(part) ? <em key={i}>{part}</em> : part
+  )
+}
+
 const QUESTIONS = [
   {
     // correct: A
@@ -339,7 +348,7 @@ export default function RenalTrivia() {
 
       <div className="p-4 space-y-3">
         {/* Question */}
-        <p className="text-sm font-semibold text-gray-800 leading-relaxed">{question.text}</p>
+        <p className="text-sm font-semibold text-gray-800 leading-relaxed">{italicise(question.text)}</p>
 
         {/* Options */}
         <div className="space-y-2">

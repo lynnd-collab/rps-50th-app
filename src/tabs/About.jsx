@@ -1,4 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
+
+const LATIN_TITLES = ['De viscerum structura', 'De pulmonibus', 'De renibus']
+const LATIN_RE = new RegExp(`(${LATIN_TITLES.join('|')})`, 'g')
+function italicise(text) {
+  if (!text) return text
+  return text.split(LATIN_RE).map((part, i) =>
+    LATIN_TITLES.includes(part) ? <em key={i}>{part}</em> : part
+  )
+}
 import { foundingMembers, presidents } from '../data'
 
 const QUOTES = [
@@ -115,7 +124,7 @@ function QuoteCarousel() {
         <footer className="mt-2">
           <p className="text-xs font-semibold text-gray-500">— {q.attribution}</p>
           {q.context && (
-            <p className="text-xs text-gray-400 mt-0.5">{q.context}</p>
+            <p className="text-xs text-gray-400 mt-0.5">{italicise(q.context)}</p>
           )}
         </footer>
       </div>
