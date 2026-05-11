@@ -303,26 +303,40 @@ export default function RenalTrivia() {
   const [deck, setDeck] = useState(() => loadSession()?.deck ?? shuffle(QUESTIONS))
   const [qIndex, setQIndex] = useState(() => loadSession()?.qIndex ?? 0)
   const [selected, setSelected] = useState(() => loadSession()?.selected ?? null)
+  const [history, setHistory] = useState(() => loadSession()?.history ?? [])
 
   const question = deck[qIndex]
   const answered = selected !== null
   const isCorrect = selected === question.correct
 
   useEffect(() => {
-    saveSession({ deck, qIndex, selected })
-  }, [deck, qIndex, selected])
+    saveSession({ deck, qIndex, selected, history })
+  }, [deck, qIndex, selected, history])
 
-  const nextQuestion = useCallback(() => {
+  const advance = useCallback((savedSelected) => {
+    setHistory(h => [...h, { qIndex, selected: savedSelected }])
     const next = qIndex + 1
     if (next >= deck.length) {
       clearSession()
       setDeck(shuffle(QUESTIONS))
       setQIndex(0)
+      setHistory([])
     } else {
       setQIndex(next)
     }
     setSelected(null)
   }, [qIndex, deck.length])
+
+  const nextQuestion = useCallback(() => advance(selected), [advance, selected])
+  const skipQuestion = useCallback(() => advance(null), [advance])
+
+  const goBack = useCallback(() => {
+    if (history.length === 0) return
+    const prev = history[history.length - 1]
+    setHistory(h => h.slice(0, -1))
+    setQIndex(prev.qIndex)
+    setSelected(prev.selected ?? null)
+  }, [history])
 
   function optionStyle(letter) {
     if (!answered) return {}
@@ -383,16 +397,40 @@ export default function RenalTrivia() {
           </p>
         )}
 
-        {/* Next button */}
-        {answered && (
-          <button
-            onClick={nextQuestion}
-            className="w-full py-2.5 rounded-lg text-sm font-semibold text-white transition-colors"
-            style={{ background: '#0C447C' }}
-          >
-            Next question →
-          </button>
-        )}
+        {/* Nav row: Back | Next (if answered) | Skip (if not answered) */}
+        <div className="flex gap-2">
+          {history.length > 0 ? (
+            <button
+              onClick={goBack}
+              className="py-2.5 px-3 rounded-lg text-xs font-medium border border-gray-300 text-gray-400 hover:text-gray-500 hover:border-gray-400 transition-colors"
+            >
+              ← Back
+            </button>
+          ) : (
+            <div className="py-2.5 px-3" aria-hidden="true" />
+          )}
+
+          {answered && (
+            <button
+              onClick={nextQuestion}
+              className="flex-1 py-2.5 rounded-lg text-sm font-semibold text-white transition-colors"
+              style={{ background: '#0C447C' }}
+            >
+              Next question →
+            </button>
+          )}
+
+          {!answered && <div className="flex-1" />}
+
+          {!answered && (
+            <button
+              onClick={skipQuestion}
+              className="py-2.5 px-3 rounded-lg text-xs font-medium border border-gray-300 text-gray-400 hover:text-gray-500 hover:border-gray-400 transition-colors"
+            >
+              Skip
+            </button>
+          )}
+        </div>
 
         {/* Progress */}
         <p className="text-center text-[11px] text-gray-400">
