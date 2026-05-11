@@ -224,6 +224,39 @@ const QUESTIONS = [
     ],
     correct: 'C',
   },
+  {
+    // correct: B
+    text: 'Malpighi described glomeruli as resembling what?',
+    options: [
+      { letter: 'A', text: 'Tiny grapes' },
+      { letter: 'B', text: 'Fish eggs' },
+      { letter: 'C', text: 'Small pearls' },
+      { letter: 'D', text: 'Soap bubbles' },
+    ],
+    correct: 'B',
+  },
+  {
+    // correct: C
+    text: "How many years passed between Malpighi's description of glomeruli and Bowman's proof that they connected to tubules?",
+    options: [
+      { letter: 'A', text: '26 years' },
+      { letter: 'B', text: '76 years' },
+      { letter: 'C', text: '176 years' },
+      { letter: 'D', text: '226 years' },
+    ],
+    correct: 'C',
+  },
+  {
+    // correct: C
+    text: 'Malpighi published his landmark kidney treatise De renibus in 1666 without illustrations, despite having drawn them. Why?',
+    options: [
+      { letter: 'A', text: 'He misplaced the drawings' },
+      { letter: 'B', text: 'The publisher refused illustrations' },
+      { letter: 'C', text: 'He wanted to publish without delay, before others claimed the discovery' },
+      { letter: 'D', text: 'His colleagues thought he was not good at drawing' },
+    ],
+    correct: 'C',
+  },
 ]
 
 const SESSION_KEY = 'renaltrivia_state'

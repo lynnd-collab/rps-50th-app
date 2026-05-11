@@ -27,6 +27,16 @@ const QUOTES = [
     attribution: 'Fred G. Silva',
     context: 'Fred Silva was not only a major teacher in renal pathology, but also part of the Society\'s early leadership and historical memory. His observation that the kidney has only a limited repertoire of responses to injury captures one of the central interpretive challenges of nephropathology.',
   },
+  {
+    quote: 'Innumerable small globules resembling fish eggs.',
+    attribution: 'Marcello Malpighi',
+    context: 'Malpighi\'s first description of glomeruli, De renibus, 1666.',
+  },
+  {
+    quote: 'The blackened glomeruli attached to the fine ramifications of the arterial tree, like apples to tree branches.',
+    attribution: 'Marcello Malpighi',
+    context: 'Describing his ink injection experiments to visualise glomeruli, De renibus, 1666.',
+  },
 ]
 
 const INTERVAL = 15000
