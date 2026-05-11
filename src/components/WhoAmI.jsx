@@ -23,10 +23,11 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
-      'I began my medical career as a surgeon before training as a pathologist after World War II.',
+      'After World War II, I parachuted into a Japanese prisoner of war camp in Siam to care for thousands of malnourished Malay labourers.',
+      'As a young pathologist at St. Mary\'s, I worked briefly under Alexander Fleming, who told me "brains times equipment is a constant" when I asked for research funds.',
       'I collaborated with George Pickering on clinicopathologic studies of hypertensive nephropathy.',
-      'I wrote the field\'s foundational textbook, first published in 1966.',
-      'RPS members travelled to my home in Baltimore to present me with my award.',
+      'I wrote the field\'s foundational textbook, first published in 1966, working on it every evening in my attic until past midnight.',
+      'RPS members travelled to my home in Baltimore to present me with my lifetime achievement award.',
     ],
     answer: 'Robert Heptinstall',
   },

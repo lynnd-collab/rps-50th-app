@@ -46,6 +46,11 @@ const QUOTES = [
     attribution: 'Marcello Malpighi',
     context: 'Describing his ink injection experiments to visualise glomeruli, De renibus, 1666.',
   },
+  {
+    quote: 'Brains times equipment is a constant.',
+    attribution: 'Alexander Fleming, to a young Robert Heptinstall, St. Mary\'s Hospital, London, 1947',
+    context: 'Fleming, who discovered penicillin at St. Mary\'s, offered this equation when Heptinstall asked for equipment money early in his career. The implication: the smarter you are, the less equipment you need.',
+  },
 ]
 
 const INTERVAL = 15000
