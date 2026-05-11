@@ -51,6 +51,16 @@ const QUOTES = [
     attribution: 'Alexander Fleming, to a young Robert Heptinstall, St. Mary\'s Hospital, London, 1947',
     context: 'Fleming, who discovered penicillin at St. Mary\'s, offered this equation when Heptinstall asked for equipment money early in his career. The implication: the smarter you are, the less equipment you need.',
   },
+  {
+    quote: 'Never become a departmental chairman unless it\'s in absolute desperation.',
+    attribution: 'Robert Heptinstall',
+    context: 'Reflecting on his career at Johns Hopkins, 2007.',
+  },
+  {
+    quote: 'I reckon that it educated half a child a year from the royalties.',
+    attribution: 'Robert Heptinstall',
+    context: 'On the financial rewards of writing a specialised renal pathology textbook, 2007.',
+  },
 ]
 
 const INTERVAL = 15000
