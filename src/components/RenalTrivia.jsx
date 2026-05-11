@@ -266,6 +266,28 @@ const QUESTIONS = [
     ],
     correct: 'C',
   },
+  {
+    // correct: B
+    text: 'William Bowman published the first accurate drawing of the nephron in 1842 — but what did he get wrong about it?',
+    options: [
+      { letter: 'A', text: 'He thought the tubules drained into the bloodstream' },
+      { letter: 'B', text: 'He thought the glomerulus secreted urine rather than filtering blood' },
+      { letter: 'C', text: 'He believed the loop of Henle was part of the vascular system' },
+      { letter: 'D', text: 'He thought the nephron was a continuous structure with no distinct segments' },
+    ],
+    correct: 'B',
+  },
+  {
+    // correct: C
+    text: "The term 'glomerulonephritis' was coined in 1870 — but by whom?",
+    options: [
+      { letter: 'A', text: 'Rudolf Virchow, father of cellular pathology' },
+      { letter: 'B', text: 'Friedrich Henle, who described the loop bearing his name' },
+      { letter: 'C', text: 'Edwin Klebs, a microbiologist better known for co-discovering the diphtheria bacillus' },
+      { letter: 'D', text: "Richard Bright, whose name became synonymous with kidney disease" },
+    ],
+    correct: 'C',
+  },
 ]
 
 const SESSION_KEY = 'renaltrivia_state'
