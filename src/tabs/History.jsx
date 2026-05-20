@@ -87,11 +87,11 @@ export default function History() {
           </p>
           <p>
             The first RPS President was Gloria Gallo and the first Secretary was J. Charles Jennette.
-            RPS has over 400 registered members from over 30 countries and all continents: Australia,
+            RPS has over 400 registered members from over 30 countries and six continents: Australia,
             Austria, Belgium, Brazil, Bulgaria, Canada, Chile, Colombia, Croatia, Denmark, France,
             Germany, Greece, Iceland, India, Iran, Italy, Japan, Korea, Malaysia, Mexico, Nigeria,
-            Norway, Russia, Saudi Arabia, Scotland, Singapore, Slovenia, Spain, Sweden, Switzerland,
-            Thailand, The Netherlands, Turkey, United Kingdom, United States of America, and Venezuela.
+            Norway, Russia, Saudi Arabia, Singapore, Slovenia, Spain, Sweden, Switzerland,
+            Thailand, the Netherlands, Turkey, United Kingdom, United States of America, and Venezuela.
           </p>
         </div>
       </section>
@@ -104,6 +104,16 @@ export default function History() {
           </li>
           <li className="text-[11px] text-gray-400 leading-relaxed">
             D'Agati VD, Mengel M. The rise of renal pathology in nephrology: structure illuminates function. <span className="italic">Am J Kidney Dis.</span> 2013 Jun;61(6):1016–25.
+          </li>
+          <li className="text-[11px] text-gray-400 leading-relaxed">
+            <a
+              href="https://www.renalpathsoc.org/Full-RPS-History"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#0C447C] underline underline-offset-2 hover:text-[#1a5a9e]"
+            >
+              Renal Pathology Society — Full RPS History
+            </a>
           </li>
         </ul>
       </section>

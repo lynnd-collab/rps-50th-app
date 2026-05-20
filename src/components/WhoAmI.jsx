@@ -292,6 +292,16 @@ const PATHOLOGISTS = [
     ],
     answer: 'Lynn Cornell',
   },
+  {
+    clues: [
+      'I am a certified pilot and was my high school\'s mascot.',
+      'I trained in pathology at Indiana University and did my surgical pathology fellowship under Juan Rosai and Louis Dehner at the University of Minnesota.',
+      'I was a leading voice in reclassifying dense deposit disease as distinct from MPGN, and contributed to the Oxford IgA Nephropathy classification.',
+      'I received the Jacob Churg Award from the Renal Pathology Society in 2023.',
+      'I founded Arkana Laboratories in Little Rock in 2001, one of the first dedicated renal pathology reference labs in the country.',
+    ],
+    answer: 'Patrick Walker',
+  },
 ]
 
 function shuffle(arr) {

@@ -24,7 +24,12 @@ export const timeline = [
   { year: 2007, milestone: false, text: '30th anniversary celebration at USCAP in San Diego honours founding members.' },
   { year: 2009, milestone: false, text: 'Oxford classification of IgA nephropathy released. Gloria Gallo Research Award established.' },
   { year: 2010, milestone: false, text: 'The first International Renal Pathology Conference (IRPC) is held in La Coruña, Spain, a joint meeting of the RPS, the European Society of Pathology Working Group, and the Spanish Pathology Society.' },
+  { year: 2015, milestone: false, text: 'The 2nd IRPC is held in Tsukuba City, Japan.' },
+  { year: 2017, milestone: false, text: 'The 3rd IRPC is held in New Delhi, India, a joint meeting of the RPS and the Indian Society of Renal and Transplantation Pathology.' },
+  { year: 2020, milestone: false, text: 'The 4th IRPC is held virtually due to the COVID-19 pandemic, originally planned for Warsaw, Poland.' },
+  { year: 2023, milestone: false, text: 'The 5th IRPC is held in Zagreb, Croatia.' },
   { year: 2025, milestone: false, text: 'RPS surpasses 400 regular members across 30+ countries, with additional trainee membership growing the community further.' },
+  { year: 2026, milestone: false, text: 'The 6th IRPC is held in Antigua, Guatemala, in collaboration with the Latin America Society of Nephrology and Hypertension.' },
   { year: 2027, milestone: true, text: 'RPS\'s 50th birthday — celebrating 5 decades since Conrad Pirani gathered the founding members in Washington, D.C. to form our society.' },
 ]
 

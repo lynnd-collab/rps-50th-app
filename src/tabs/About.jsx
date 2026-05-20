@@ -61,6 +61,16 @@ const QUOTES = [
     attribution: 'Robert Heptinstall',
     context: 'On the financial rewards of writing a specialised renal pathology textbook, 2007.',
   },
+  {
+    quote: 'When the observed evidence is opposed to a theory prevailing at the moment, one must accept the data and give up the theory, even when it is supported by famous names and widely accepted.',
+    attribution: 'Claude Bernard',
+    context: 'Introduction à l’étude de la Médecine Expérimentale, 1865.',
+  },
+  {
+    quote: '[The history of renal physiology] has been a history of rival theories, each based upon inconclusive evidence. Its errors have been compounded by oversimplification in the matter of theory and underexamination in the matter of critical investigation.',
+    attribution: 'Homer Smith',
+    context: 'The Kidney: Structure and Function in Health and Disease, 1951. Written, ironically, just before Smith himself had to abandon his own theory of urine concentration after being convinced by new experimental evidence.',
+  },
 ]
 
 const INTERVAL = 15000
