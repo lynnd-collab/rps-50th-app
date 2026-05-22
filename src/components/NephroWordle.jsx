@@ -22,7 +22,7 @@ const WORDS = [
   { word: 'ORGAN', hint: 'Also something Bach composed for' },
   { word: 'BLOOD', hint: 'Filtered fluid' },
   { word: 'COLIC', hint: "A stone's calling card" },
-  { word: 'RENIN', hint: 'Small silver positive dots on LM' },
+  { word: 'RENIN', hint: 'Small silver dots' },
   { word: 'HENLE', hint: 'A famous loop' },
   { word: 'BANFF', hint: 'An Alberta town with pathological significance' },
   { word: 'DONOR', hint: 'One half of a pair' },
