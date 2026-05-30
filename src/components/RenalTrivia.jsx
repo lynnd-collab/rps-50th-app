@@ -199,6 +199,7 @@ const QUESTIONS = [
       { letter: 'D', text: '2025' },
     ],
     correct: 'D',
+    funFact: 'Women have been central to RPS leadership from the beginning — Gloria Gallo was the society\'s first president in 1993.',
   },
   {
     // correct: C
@@ -287,6 +288,98 @@ const QUESTIONS = [
       { letter: 'D', text: "Richard Bright, whose name became synonymous with kidney disease" },
     ],
     correct: 'C',
+  },
+  {
+    // correct: C
+    text: "At the 1961 Ciba Foundation Symposium on renal biopsy, participants debated what to do with the term 'subacute glomerulonephritis.' What did Hugh de Wardener suggest replacing it with?",
+    options: [
+      { letter: 'A', text: 'Focal proliferative nephritis' },
+      { letter: 'B', text: 'Nephrotic-nephritic syndrome' },
+      { letter: 'C', text: 'Rapidly progressive glomerulonephritis' },
+      { letter: 'D', text: 'Type I nephritis' },
+    ],
+    correct: 'C',
+  },
+  {
+    // correct: B
+    text: "Arnold Rich, chairman of the 1961 Ciba Symposium on renal biopsy, offered a surprisingly skeptical closing assessment of the technique's clinical value. What did Johns Hopkins data he cited actually show?",
+    options: [
+      { letter: 'A', text: 'Biopsy was too risky to recommend outside specialist centers' },
+      { letter: 'B', text: 'Biopsy changed management in only 3% of consecutive cases' },
+      { letter: 'C', text: 'Biopsy was most useful in the nephrotic syndrome and least useful elsewhere' },
+      { letter: 'D', text: 'Biopsy led to harmful treatment changes in 10% of cases' },
+    ],
+    correct: 'B',
+  },
+  {
+    // correct: C
+    text: 'At the 1961 Ciba Symposium, participants disclosed their combined safety data: over 5,000 biopsies, no patient deaths — but Jean Hamburger disclosed awareness of four additional deaths not in the table. What did those four cases have in common?',
+    options: [
+      { letter: 'A', text: 'They were all open surgical biopsies' },
+      { letter: 'B', text: 'They were all in patients with amyloidosis' },
+      { letter: 'C', text: 'They were all unpublished' },
+      { letter: 'D', text: 'They were all performed by trainees' },
+    ],
+    correct: 'C',
+    funFact: 'One from France, one Poland, one Germany, one Switzerland — none published. The reassuring safety record depended on what made it into print.',
+  },
+  {
+    // correct: C
+    text: 'At the 1961 Ciba Symposium, Robert Kark used a phrase in live discussion to describe nephrotic syndrome patients who responded dramatically to steroids, which he suspected had an allergic basis — bee stings, grass pollens, seafood. What did he call it?',
+    options: [
+      { letter: 'A', text: 'Minimal change nephropathy' },
+      { letter: 'B', text: 'Lipoid nephrosis of adults' },
+      { letter: 'C', text: 'Asthma of the nephron' },
+      { letter: 'D', text: 'Idiopathic foot process disease' },
+    ],
+    correct: 'C',
+  },
+  {
+    // correct: B
+    text: 'At the 1961 Ciba Symposium, Robert Heptinstall offered a one-sentence verdict on how pathologists used the diagnosis of chronic pyelonephritis. What did he say it was?',
+    options: [
+      { letter: 'A', text: '"A diagnosis that requires the whole kidney to be honest"' },
+      { letter: 'B', text: "\"A rubbish heap into which things that you can't diagnose are thrown\"" },
+      { letter: 'C', text: '"The most overused term in all of nephropathology"' },
+      { letter: 'D', text: '"A clinical diagnosis masquerading as a morphological one"' },
+    ],
+    correct: 'B',
+  },
+  {
+    // correct: C
+    text: 'Foot process fusion (effacement) — now a hallmark of minimal change disease — was first described by whom, and when?',
+    options: [
+      { letter: 'A', text: 'Iversen and Brun, 1951' },
+      { letter: 'B', text: 'Kark and Muehrcke, 1954' },
+      { letter: 'C', text: 'Farquhar, Vernier, and Good, 1957' },
+      { letter: 'D', text: 'Pirani and Pollak, 1961' },
+    ],
+    correct: 'C',
+    funFact: 'Described just four years earlier, foot process fusion was still being debated at the 1961 symposium — including whether it was specific to nephrotic syndrome.',
+  },
+  {
+    // correct: C
+    text: "Robert Kark's original 1954 paper on percutaneous renal biopsy technique listed hypertension as a contraindication. What changed his mind?",
+    options: [
+      { letter: 'A', text: 'A randomized trial showing acceptable complication rates in hypertensive patients' },
+      { letter: 'B', text: 'Better needle design reducing bleeding risk' },
+      { letter: 'C', text: 'The clinical need to biopsy the unaffected kidney in unilateral renal artery stenosis' },
+      { letter: 'D', text: 'Improved post-biopsy blood pressure monitoring protocols' },
+    ],
+    correct: 'C',
+    funFact: 'Kark explained this himself at the 1961 symposium: he needed to assess the contralateral kidney before surgery.',
+  },
+  {
+    // correct: B
+    text: 'Pirani was the only professor at Columbia for whom the fire warden posted a warning sign on the inside of his office door. Why?',
+    options: [
+      { letter: 'A', text: 'He kept live cultures in an unapproved lab space' },
+      { letter: 'B', text: 'He refused to stop smoking his pipe' },
+      { letter: 'C', text: 'He ran an electron microscope without proper ventilation' },
+      { letter: 'D', text: 'He stored flammable fixatives above the permitted quantity' },
+    ],
+    correct: 'B',
+    funFact: "The sign was posted to no avail. Learning renal pathology, as D'Agati wrote, happened \"in the aromatic haze of pipe smoke.\"",
   },
 ]
 
@@ -414,9 +507,16 @@ export default function RenalTrivia() {
 
         {/* Feedback */}
         {answered && (
-          <p className={`text-sm font-semibold ${isCorrect ? 'text-green-700' : 'text-red-600'}`}>
-            {isCorrect ? 'Correct!' : `Not quite — the answer is ${question.options.find(o => o.letter === question.correct)?.text ?? question.correct}.`}
-          </p>
+          <div className="space-y-2">
+            <p className={`text-sm font-semibold ${isCorrect ? 'text-green-700' : 'text-red-600'}`}>
+              {isCorrect ? 'Correct!' : `Not quite — the answer is ${question.options.find(o => o.letter === question.correct)?.text ?? question.correct}.`}
+            </p>
+            {question.funFact && (
+              <p className="text-xs text-gray-500 leading-relaxed border-l-2 border-gray-200 pl-3">
+                {question.funFact}
+              </p>
+            )}
+          </div>
         )}
 
         {/* Nav row: Back | Next (if answered) | Skip (if not answered) */}
