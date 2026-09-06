@@ -42,6 +42,7 @@ const QUESTIONS = [
       { letter: 'D', text: 'A challenge from nephrologists to pathologists' },
     ],
     correct: 'C',
+    funFact: 'Pirani\'s own words: "the stimulating effects of a midmorning glass of sherry and a leisurely afternoon cup of tea fostered a lively exchange of ideas". The 1961 symposium is where the modern field of renal pathology was born — apparently well lubricated.',
   },
   {
     // correct: B
@@ -87,6 +88,7 @@ const QUESTIONS = [
       { letter: 'D', text: '18th century' },
     ],
     correct: 'C',
+    funFact: 'Malpighi described the glomerulus in his 1666 treatise De Viscerum Structura. He used one of the earliest microscopes at a time when the instrument was available to only a handful of natural philosophers worldwide.',
   },
   {
     // correct: C
@@ -102,14 +104,15 @@ const QUESTIONS = [
   },
   {
     // correct: D
-    text: "Who coined the term 'nephrology' and when?",
+    text: 'The term "nephrology" is often credited to Jean Hamburger, who used it at the first ISN meeting in 1960. Who actually used it first?',
     options: [
-      { letter: 'A', text: 'Richard Bright, 1827' },
-      { letter: 'B', text: 'Conrad Pirani, 1951' },
-      { letter: 'C', text: 'Robert Heptinstall, 1966' },
-      { letter: 'D', text: 'Jean Hamburger, 1960' },
+      { letter: 'A', text: 'Hugh de Wardener, in a Lancet editorial' },
+      { letter: 'B', text: 'Robert Platt, in a Royal College of Physicians address' },
+      { letter: 'C', text: 'Poul Iversen, at a Copenhagen kidney club meeting' },
+      { letter: 'D', text: 'Arnold Osman, in the Nursing Mirror in 1945' },
     ],
     correct: 'D',
+    funFact: `Osman used both "nephrology" and "nephrologist" in 1945 — 15 years before Hamburger — but published in a nursing journal. Hamburger announced it from the stage of the first International Society of Nephrology meeting in Evian. Osman was a relatively marginal figure. He worked at Pembury Hospital in Kent, not a major academic center. Stewart Cameron, a nephrologist at King's College London, described him as "something of a joke" in later years for his excessive use of alkalis for almost every renal complaint. Osman published the word "nephrologist" in the Nursing Mirror — a nursing journal — and his 1948 draft paper on organizing nephrology as a specialty was apparently never published. So the word existed but didn't circulate widely. Hamburger, by contrast, introduced the term at a major international stage — the first ISN meeting in Evian in 1960. When a charismatic Parisian nephrologist announces a name at the founding meeting of an international society, the term stuck. When a somewhat eccentric physician in Kent used it in a nursing magazine, it didn't.`,
   },
   {
     // correct: A
@@ -121,6 +124,7 @@ const QUESTIONS = [
       { letter: 'D', text: 'The paper was too long' },
     ],
     correct: 'A',
+    funFact: 'The Annals of Internal Medicine published the paper instead. The paper described the first demonstration that foot process effacement reverses with steroid treatment — one of the most important observations in the history of nephrotic syndrome. FOLLI G, POLLAK VE, REID RT, PIRANI CL, KARK RM. Electron-microscopic studies of reversible glomerular lesions in the adult nephrotic syndrome. Ann Intern Med. 1958 Oct;49(4):775-95.',
   },
   {
     // correct: B
@@ -143,6 +147,7 @@ const QUESTIONS = [
       { letter: 'D', text: 'Churg and Grishman' },
     ],
     correct: 'C',
+    funFact: 'Kark and Muehrcke also switched from the aspiration needle used by Iversen and Brun to the Vim-Silverman cutting needle. Two changes in one paper — prone position and better needle — that made percutaneous biopsy safe enough for widespread adoption. KARK RM, MUEHRCKE RC. Biopsy of kidney in prone position. Lancet. 1954 May 22;266(6821):1047-9.',
   },
   {
     // correct: D
@@ -154,6 +159,7 @@ const QUESTIONS = [
       { letter: 'D', text: 'The 6th ISN Congress, Florence' },
     ],
     correct: 'D',
+    funFact: 'Hamburger said this in 1975 at the 6th International Congress of Nephrology in Florence — 15 years after he introduced the word "nephrology" itself at the founding ISN meeting.',
   },
   {
     // correct: C
@@ -255,6 +261,7 @@ const QUESTIONS = [
       { letter: 'D', text: '226 years' },
     ],
     correct: 'C',
+    funFact: 'Malpighi described the glomerulus in 1666 using one of the earliest microscopes. He thought the structures were glands. It took 176 years, and better microscopes, for William Bowman to show in 1842 that they connected to tubules and were part of a filtration system.',
   },
   {
     // correct: C
@@ -272,7 +279,7 @@ const QUESTIONS = [
     text: 'William Bowman published the first accurate drawing of the nephron in 1842 — but what did he get wrong about it?',
     options: [
       { letter: 'A', text: 'He thought the tubules drained into the bloodstream' },
-      { letter: 'B', text: 'He thought the glomerulus secreted urine rather than filtering blood' },
+      { letter: 'B', text: 'He thought the glomerulus separated only the watery part of urine, while the tubules secreted the characteristic urinary solutes' },
       { letter: 'C', text: 'He believed the loop of Henle was part of the vascular system' },
       { letter: 'D', text: 'He thought the nephron was a continuous structure with no distinct segments' },
     ],
@@ -299,6 +306,7 @@ const QUESTIONS = [
       { letter: 'D', text: 'Type I nephritis' },
     ],
     correct: 'C',
+    funFact: `de Wardener said in live discussion at the 1961 Ciba Symposium: "The best thing to do is to throw the word away... 'Rapidly progressive' is very good." A clinician coined the term in an argument — and it's been the nephrologist's descriptor ever since.`,
   },
   {
     // correct: B
@@ -370,6 +378,18 @@ const QUESTIONS = [
     funFact: 'Kark explained this himself at the 1961 symposium: he needed to assess the contralateral kidney before surgery.',
   },
   {
+    // correct: D
+    text: 'In 1914, the pathologist Theodor Fahr produced histologic drawings of kidney disease so accurate they were mistaken for photographs. One drawing, labeled "lipoid nephrosis with glomerular degeneration," actually depicted which disease that wouldn\'t be formally recognized for decades?',
+    options: [
+      { letter: 'A', text: 'Minimal change disease' },
+      { letter: 'B', text: 'IgA nephropathy' },
+      { letter: 'C', text: 'Membranous nephropathy' },
+      { letter: 'D', text: 'Focal segmental glomerulosclerosis' },
+    ],
+    correct: 'D',
+    funFact: 'Fahr also inferred that FSGS evolved from minimal change disease — more than 80 years before the concept of podocytopathy was introduced.',
+  },
+  {
     // correct: B
     text: 'Pirani was the only professor at Columbia for whom the fire warden posted a warning sign on the inside of his office door. Why?',
     options: [
@@ -379,7 +399,67 @@ const QUESTIONS = [
       { letter: 'D', text: 'He stored flammable fixatives above the permitted quantity' },
     ],
     correct: 'B',
-    funFact: "The sign was posted to no avail. Learning renal pathology, as D'Agati wrote, happened \"in the aromatic haze of pipe smoke.\"",
+    funFact: `The sign was posted to no avail. Learning renal pathology, as D'Agati wrote, happened "in the aromatic haze of pipe smoke".`,
+  },
+  {
+    // correct: B
+    text: 'Before writing his landmark textbook, Robert Heptinstall trained for six months in the laboratory of which Nobel laureate?',
+    options: [
+      { letter: 'A', text: 'Howard Florey' },
+      { letter: 'B', text: 'Alexander Fleming' },
+      { letter: 'C', text: 'Peter Medawar' },
+      { letter: 'D', text: 'Hans Krebs' },
+    ],
+    correct: 'B',
+    funFact: `When the young Heptinstall asked Fleming for equipment money early in his career, Fleming famously replied, "Brains times equipment is a constant." The implication: the smarter you are, the less equipment you need. Fleming, of course, had discovered penicillin at that same hospital.`,
+  },
+  {
+    // correct: A
+    text: 'How did Robert Kark spread knowledge of the percutaneous renal biopsy technique to England?',
+    options: [
+      { letter: 'A', text: 'He sent Bob Muehrcke to give a live demonstration' },
+      { letter: 'B', text: 'He showed a video at the 1960 ISN meeting' },
+      { letter: 'C', text: 'He published a widely read technical manual' },
+      { letter: 'D', text: 'He invited Marc Joekes to Chicago to observe' },
+    ],
+    correct: 'A',
+    funFact: `Kark and Muehrcke, based at the University of Illinois in Chicago, developed the percutaneous renal biopsy. Kark had done a lot of liver biopsies and immediately saw the potential of the renal biopsy. A year after publishing their 1954 Lancet paper, Kark sent Muehrcke to London to "spread the gospel" of the kidney biopsy, and demonstrate the technique in person to nephrologist Marc Joekes at St. Mary's Hospital.`,
+  },
+  {
+    // correct: D
+    text: 'What was the one absolute rule of the British Pathological Society when Heptinstall was a young pathologist?',
+    options: [
+      { letter: 'A', text: 'All papers had to be submitted 6 months in advance' },
+      { letter: 'B', text: 'No paper could exceed 10 minutes' },
+      { letter: 'C', text: 'Discussion was limited to senior members only' },
+      { letter: 'D', text: 'Speakers were forbidden from reading from notes' },
+    ],
+    correct: 'D',
+    funFact: `Heptinstall: "If you used them, you would either be thrown off the platform or never again be allowed to present another paper." He tried to instill the same rule at Hopkins, with mixed results.`,
+  },
+  {
+    // correct: B
+    text: 'When Heptinstall first arrived at Johns Hopkins in 1954, how many research grants did the entire pathology department hold?',
+    options: [
+      { letter: 'A', text: 'None' },
+      { letter: 'B', text: 'One' },
+      { letter: 'C', text: 'Five' },
+      { letter: 'D', text: 'Twelve' },
+    ],
+    correct: 'B',
+    funFact: "It was Fred Germuth's grant. Arnold Rich actively scorned research grants — he felt the department must not become dependent on the federal government.",
+  },
+  {
+    // correct: D
+    text: `Who wrote the following? "Do not stop to question whether these ideas are new or old, but ask, more properly, whether they harmonize with nature. And be assured of this one thing, that I never reached my idea of the structure of the kidney by the aid of books but by the long, patient and varied use of the microscope. I have gotten the rest by deduction of reason, slowly, and with an open mind, as is my custom."`,
+    options: [
+      { letter: 'A', text: 'William Harvey' },
+      { letter: 'B', text: 'Richard Bright' },
+      { letter: 'C', text: 'William Bowman' },
+      { letter: 'D', text: 'Marcello Malpighi' },
+    ],
+    correct: 'D',
+    funFact: 'Conrad Pirani kept this quote above his desk at eye level his entire career.',
   },
 ]
 

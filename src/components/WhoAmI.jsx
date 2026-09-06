@@ -116,11 +116,12 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
-      'I started my career at NYU, where together with Gloria Gallo I pioneered the application of immunofluorescence microscopy to human kidney biopsies.',
+      'I began my career at NYU, where my early immunofluorescence studies of glomerular disease helped establish IF as a diagnostic tool in renal pathology.',
+      'I met my future wife at the Woods Hole Marine Biological Laboratories in 1957. She was studying embryology; I was studying physiology. Romance bloomed after I lent her my microscope.',
+      'I hosted summertime Shakespeare readings on my back porch for more than a decade, and colleagues said my dry wit could deflate the pompous with a choice remark.',
+      'I was a key instigator of the WHO classification of lupus glomerulonephritis and a founding member of the Renal Pathology Club.',
       'In 1974 I became pathologist-in-chief at Massachusetts General Hospital, and in 1982 became the first Benjamin Castleman Professor of Pathology at Harvard.',
-      'I was a key instigator of the WHO classification of lupus glomerulonephritis and a founding member of the Renal Pathology Club in 1977.',
-      'I was known for hosting Shakespeare readings on my porch, and colleagues said my dry wit could deflate the pompous with a choice remark.',
-      'My friends and colleagues have always called me "Mac".',
+      'As an emeritus professor, I spent hours each day at the microscope going over cases with residents on service. At age 81, they voted me best teacher in the department.',
     ],
     answer: 'Robert McCluskey',
   },
@@ -254,10 +255,9 @@ const PATHOLOGISTS = [
   },
   {
     clues: [
-      'I am red-green colour-blind, so I rely on sharp-eyed trainees to help spot eosinophils.',
       'I have made diabetic nephropathy more interesting than people expected.',
+      'I trained in renal pathology at Brigham and Women\'s Hospital and Harvard Medical School before joining the University of Washington faculty in 1986.',
       'My work has been wide-ranging and has included major studies of diabetic nephropathy, kidney transplant pathology, and glomerular disease.',
-      'I have spent much of my career in renal pathology at the University of Washington.',
       'I served as President of the Renal Pathology Society in 2000 and received the Jacob Churg Award in 2003.',
     ],
     answer: 'Charles Alpers',
